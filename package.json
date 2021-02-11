@@ -12,5 +12,8 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/vineetkarmiani/onlineexaminationsystem#readme"
+  "homepage": "https://bitbucket.org/vineetkarmiani/onlineexaminationsystem#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

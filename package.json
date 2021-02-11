@@ -1,0 +1,16 @@
+{
+  "name": "onlineexaminationsystem",
+  "version": "1.0.0",
+  "description": "OnlineExaminationSystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://vineetkarmiani@bitbucket.org/vineetkarmiani/onlineexaminationsystem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/vineetkarmiani/onlineexaminationsystem#readme"
+}

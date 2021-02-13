@@ -25,7 +25,7 @@ var userSchema = new mongoose.Schema(
       salt: String,
       schoolId: {
         type: ObjectId,
-        ref: "school",
+        ref: "School",
         requied: true
       },
       role: {

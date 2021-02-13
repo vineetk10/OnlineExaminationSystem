@@ -12,4 +12,4 @@ var subjectSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("subject",subjectSchema);
+module.exports = mongoose.model("Subject",subjectSchema);

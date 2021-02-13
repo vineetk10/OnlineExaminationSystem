@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-const { StringDecoder } = require("string_decoder");
 
 var questionSchema = new mongoose.Schema({
     questionName:{

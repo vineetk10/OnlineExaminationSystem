@@ -22,7 +22,12 @@ var userSchema = new mongoose.Schema(
         type: String,
         required: true
       },
-      salt: String
+      salt: String,
+      schoolId: {
+        type: ObjectId,
+        ref: "school",
+        requied: true
+      }
     }
 )
 

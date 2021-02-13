@@ -15,7 +15,12 @@ var userSchema = new mongoose.Schema(
         trim: true,
         required: true,
         unique: true
-      }
+      },
+      encry_password: {
+        type: String,
+        required: true
+      },
+      salt: String
     }
 )
 
@@ -27,5 +32,20 @@ userSchema.virtual('fullName').
     this.name.firstName = v.substr(0, v.indexOf(' '));
     this.name.lastName = v.substr(v.indexOf(' ') + 1);
   });
+
+userSchema.method = {
+  securePassword: function(plainpassword){
+    if(plainpassword=="")
+      return "";
+    try {
+      const secret = this.salt;
+      return crypto.createHmac('sha256', secret)
+                   .update(plainpassword)
+                   .digest('hex');
+    } catch (error) {
+      return "";
+    }
+  }
+}
 
 module.exports = mongoose.model("User",userSchema);

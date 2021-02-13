@@ -27,6 +27,10 @@ var userSchema = new mongoose.Schema(
         type: ObjectId,
         ref: "school",
         requied: true
+      },
+      role: {
+        type: Number,
+        default: 0
       }
     }
 )

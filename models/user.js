@@ -31,7 +31,9 @@ var userSchema = new mongoose.Schema(
       role: {
         type: Number,
         default: 0
-      }
+      },
+      questionPaperIds: [{ type : ObjectId, ref: 'Questionpaper' }],
+      userResponseIds: [{ type : ObjectId, ref: 'UserResponse' }]
     }
 )
 

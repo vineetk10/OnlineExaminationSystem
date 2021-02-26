@@ -1,15 +1,15 @@
 var mongoose = require("mongoose");
 
 var schoolSchema = new mongoose.Schema({
-    schoolName:{
-        type:String,
-        required:true,
-        maxlength:32
+    schoolName: {
+        type: String,
+        required: true,
+        maxlength: 33
     },
-    address:{
-        type:String,
-        maxlength:100
+    address: {
+        type: String,
+        maxlength: 100
     }
 })
 
-module.exports = mongoose.model("School",schoolSchema);
+module.exports = mongoose.model("School", schoolSchema);

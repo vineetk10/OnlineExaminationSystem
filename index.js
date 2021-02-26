@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/myapp', {
+mongoose.connect('mongodb://localhost:27017/exampaperbuilder', {
     useNewUrlParser: true
 }).then(()=>{
     console.log("DB CONNECTED");

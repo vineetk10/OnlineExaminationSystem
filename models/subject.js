@@ -4,7 +4,7 @@ var subjectSchema = new mongoose.Schema({
     subjectName:{
         type:String
     },
-    totalMark:{
+    totalMarks:{
         type:Number
     },
     passingMarks: {

@@ -1,20 +1,37 @@
 var mongoose = require("mongoose");
 
 var userResponseSchema = new mongoose.Schema({
-    questionName:{
-        type:String
-    },
-    userId:{
+    createdBy: {
         type: ObjectId,
         ref: "User"
     },
-    questionId:{
-        type: ObjectId,
-        ref: "Question"
+    createdOn: {
+        type: Date,
+        default: Date.now
     },
-    response: {
-        type: String
-    }
+    questionPaperId: {
+        type: ObjectId,
+        ref: "QuestionPaper"
+    },
+    responses: [{
+        questionId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "QuestionPaper" // not sure about this
+        },
+        answer: {
+            type: String,
+            required: true,
+            default: ""
+        },
+        evaluated: {
+            type: Boolean,
+            default: false
+        },
+        marksObtained: {
+            type: Number,
+            default: 0
+        }
+    }]
 })
 
-module.exports = mongoose.model("UserResponse",userResponseSchema);
+module.exports = mongoose.model("UserResponse", userResponseSchema);

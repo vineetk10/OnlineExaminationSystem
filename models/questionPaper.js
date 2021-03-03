@@ -3,10 +3,12 @@ const { StringDecoder } = require("string_decoder");
 
 var questionPaperSchema = new mongoose.Schema({
     paperTitle: {
-        type: String
+        type: String,
+        required: true
     },
     subject: {
-        type: String
+        type: String,
+        required: true
     },
     duration: {
         type: String
@@ -23,9 +25,15 @@ var questionPaperSchema = new mongoose.Schema({
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'User'
     },
     questions: [{
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
+            index: true,
+            required: true,
+            auto: true,
+        },
         questionType: {
             type: String
         },
@@ -48,13 +56,13 @@ var questionPaperSchema = new mongoose.Schema({
     responses: [{
         responseId: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'userResponse'
+            ref: 'UserResponse'
         },
         createdBy: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'user'
+            ref: 'User'
         }
     }]
 })
 
-module.exports = mongoose.model("Questionpaper", questionPaperSchema);
+module.exports = mongoose.model("QuestionPaper", questionPaperSchema);

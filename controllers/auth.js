@@ -5,7 +5,7 @@ exports.signup = (req,res)=>{
    user.save((err, user)=>{
         if(err){
             return res.status(400).json({
-                err: "NOT able to save user in DB"
+                err: "NOT able to save user in DB"+"Error is"+err
             });
         }
         res.json({

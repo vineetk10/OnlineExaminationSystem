@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var {signout, signup} = require("../controllers/auth");
+var {signout, signup ,signin} = require("../controllers/auth");
 const { check , validationResult } = require('express-validator');
 
 router.post('/signup',[
@@ -13,6 +13,15 @@ router.post('/signup',[
         .withMessage('must contain a number')
 ],
 signup);
+
+router.post('/signin',[
+    check("email","please enter a valid email").isEmail(),
+    check("password")
+        .isLength({ min: 1 })
+        .withMessage('please enter a password')
+],
+signin);
+
 router.post('/signout',signout);
 
 module.exports = router;

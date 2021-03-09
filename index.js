@@ -13,14 +13,14 @@ const questionPaperRoutes = require("./routes/questionPaper");
 //DB Connection
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true
-}).then(()=>{
+}).then(() => {
     console.log("DB CONNECTED");
 }).catch(console.log("DB CONNECTED FAILED"))
 
 //PORT
 const port = process.env.PORT || 8000;
 
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`app is running at ${port}`);
 })
 

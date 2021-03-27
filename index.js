@@ -5,7 +5,10 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+
+//My routes
 const authRoutes = require("./routes/auth");
+const questionPaperRoutes = require("./routes/questionPaper");
 
 //DB Connection
 mongoose.connect(process.env.DATABASE, {
@@ -28,3 +31,4 @@ app.use(cors());
 
 //My Routes
 app.use("/api", authRoutes);
+app.use("/api", questionPaperRoutes);

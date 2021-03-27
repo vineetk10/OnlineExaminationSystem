@@ -26,11 +26,6 @@ var userSchema = new mongoose.Schema(
         required: true
       },
       salt: String,
-      schoolId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "School",
-        requied: true
-      },
       role: {
         type: Number,
         default: 0

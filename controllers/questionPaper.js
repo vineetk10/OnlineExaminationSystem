@@ -31,3 +31,19 @@ exports.getAllQuestionPapers = (req,res)=>{
         return res.json(papers);
     })
 }
+
+exports.createQuestionPaper = (req, res)=>{
+    const questionPaper = new QuestionPaper(req.body);
+    questionPaper.save((err, paper)=>{
+        if(err){
+            return res.status(400).json({
+                err: "NOT able to save question paper in DB"+"Error is"+err
+            });
+        }
+        res.json({
+            paperTitle: paper.paperTitle,
+            subject: paper.subject,
+            id: paper._id
+        })    
+   });
+}

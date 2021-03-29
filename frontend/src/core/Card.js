@@ -17,6 +17,12 @@ const Card = ({paper})=>{
                 Max Marks : {maxMarks}
             </p>
             </div>
+            <button
+                
+                className="btn btn-block btn-outline-success mt-2 mb-2"
+              >
+                View Question Paper
+              </button>
         </div>
     )
 }

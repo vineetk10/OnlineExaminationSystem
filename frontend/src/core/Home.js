@@ -27,7 +27,7 @@ const Home = ()=>{
     return (
         <Base title="Online Examination" description="An easy way to give exams and monitor your results">
            <div className="row text-center">
-                <h1 className="text-white">All Question Papers</h1>
+                <h1 id="header" className="header text-white">All Question Papers</h1>
                 <div className="row">
                     {papers.map((paper,index)=>{
                         return(

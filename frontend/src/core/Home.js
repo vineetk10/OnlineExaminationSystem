@@ -49,9 +49,33 @@ const Home = ()=>{
            </div>
            <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Create Your Survey</Modal.Title>
+                <Modal.Title>Create Your Own Question Paper</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+                <form>
+                    <div class="form-group">
+                        <input type="textbox" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Question Paper Name"/>
+                        <br/>
+                    </div>
+                    <div class="form-group">
+                        <input type="textbox" class="form-control" id="exampleInputPassword1" placeholder="Enter Subject Name"/>
+                        <br/>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter Duration In Minutes"/>
+                        <br/>
+                    </div>
+                    <div class="form-group">
+                        <input type="textbox" class="form-control" id="exampleInputPassword1" placeholder="Enter Maximum Marks"/>
+                        <br/>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Survey</button>
+                </form>
+                </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Close

@@ -6,6 +6,7 @@ import Card from "./Card"
 import {IoAddCircleSharp} from 'react-icons/io5'
 import Create from "../admin/CreateQuestionPaper.js"
 import { Button,Modal } from 'react-bootstrap'
+import ShowModal from './ShowModal'
 const Home = ()=>{
 
     const [papers,setPapers] = useState([])
@@ -47,44 +48,8 @@ const Home = ()=>{
                     })}
                 </div>
            </div>
-           <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                <Modal.Title>Create Your Own Question Paper</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <form>
-                    <div class="form-group">
-                        <input type="textbox" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Question Paper Name"/>
-                        <br/>
-                    </div>
-                    <div class="form-group">
-                        <input type="textbox" class="form-control" id="exampleInputPassword1" placeholder="Enter Subject Name"/>
-                        <br/>
-                    </div>
-                    <div class="form-group">
-                        <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter Duration In Minutes"/>
-                        <br/>
-                    </div>
-                    <div class="form-group">
-                        <input type="textbox" class="form-control" id="exampleInputPassword1" placeholder="Enter Maximum Marks"/>
-                        <br/>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Create Survey</button>
-                </form>
-                </Modal.Body>
-                <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Close
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                    Save Changes
-                </Button>
-                </Modal.Footer>
-        </Modal>
+           <ShowModal show ={show} handleClose={handleClose}/>
+           
         </Base>
     )
 }

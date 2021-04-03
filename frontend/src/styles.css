@@ -8,9 +8,6 @@ body {
   background: #343a40;
 }
 
-.header{
-  display: block;
-}
 .header__text{
   transform: translateX(-10%);
   margin-bottom: 100px;
@@ -19,6 +16,5 @@ body {
 
 .header__logo{
   float: right;
-  display: block;
   height: 200%;
 }

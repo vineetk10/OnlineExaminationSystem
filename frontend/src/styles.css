@@ -9,6 +9,16 @@ body {
 }
 
 .header{
-  transform: translateX(-6%);
+  display: block;
+}
+.header__text{
+  transform: translateX(-10%);
   margin-bottom: 100px;
+  display: inline-block;
+}
+
+.header__logo{
+  float: right;
+  display: block;
+  height: 200%;
 }

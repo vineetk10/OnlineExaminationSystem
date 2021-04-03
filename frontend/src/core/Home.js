@@ -3,6 +3,7 @@ import "../styles.css";
 import Base from './Base';
 import getQuestionPapers from "./helper/coreapicalls"
 import Card from "./Card"
+import {IoAddCircleSharp} from 'react-icons/io5'
 
 const Home = ()=>{
 
@@ -27,7 +28,11 @@ const Home = ()=>{
     return (
         <Base title="Online Examination" description="An easy way to give exams and monitor your results">
            <div className="row text-center">
-                <h1 id="header" className="header text-white">All Question Papers</h1>
+               <div className="header">
+                <h1 className=" header__text text-white">All Question Papers</h1>
+                <span className="header__logo"><IoAddCircleSharp size={50}/></span>
+               </div>
+                
                 <div className="row">
                     {papers.map((paper,index)=>{
                         return(

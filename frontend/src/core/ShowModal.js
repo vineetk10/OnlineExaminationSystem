@@ -14,6 +14,13 @@ const ShowModal = ({show,handleClose})=>{
     })
 
     const {paperName,subjectName,duration,marks,error,success} = values
+    const [redirect,setRedirect] = useState(false);
+
+    const getARedirect =(redirect)=>{
+        if(redirect){
+          return <Redirect to="admin/createTemplate" />
+        }
+      }
 
     const handleChange = name => event=>{
         setValues({...values,error: false,[name]:event.target.value})
@@ -22,21 +29,13 @@ const ShowModal = ({show,handleClose})=>{
     const onCreate = event=>{
         setValues({...values,error:false})
         Create({paperTitle:paperName,subject:subjectName,duration,maxMarks:marks})
-        .then(data=>{
-            if(data.error){
-                console.log("abc");
-                <Redirect to="/admin/createTemplate" />
-            }
-            else{
-                error = ""
-                success = true
-                
-            }
-        })
+        setRedirect(true)
     }
 
     return(
+        
     <Modal show={show} onHide={handleClose}>
+        {getARedirect(redirect)}
                 <Modal.Header closeButton>
                 <Modal.Title>Create Your Own Question Paper</Modal.Title>
                 </Modal.Header>

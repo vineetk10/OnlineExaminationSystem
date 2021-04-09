@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-
+import {FaEdit} from 'react-icons/fa'
 const Card = ({paper})=>{
     const paperTitle = paper ? paper.paperTitle : "";
     const subject = paper ? paper.subject : ""; 
@@ -17,10 +17,8 @@ const Card = ({paper})=>{
                 Max Marks : {maxMarks}
             </p>
             </div>
-            <button
-                
-                className="btn btn-block btn-outline-success mt-2 mb-2"
-              >
+            <FaEdit size={25} className="ml-2"/>
+            <button className="btn btn-block btn-outline-success mt-2 mb-2">
                 View Question Paper
               </button>
         </div>

@@ -57,20 +57,13 @@ const ShowModal = ({show,handleClose})=>{
                         <input type="textbox" className="form-control" onChange={handleChange("marks")} placeholder="Enter Maximum Marks"/>
                         <br/>
                     </div>
-                    <div className="form-check">
-                        <input type="checkbox" className="form-check-input"/>
-                        <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-                    </div>
-                    <button onClick={onCreate} className="btn btn-primary">Create Survey</button>
                 </form>
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
-                    Save Changes
-                </Button>
+                <button onClick={onCreate} className="btn btn-primary">Create Survey</button>
                 </Modal.Footer>
         </Modal>
     )

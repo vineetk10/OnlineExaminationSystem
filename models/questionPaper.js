@@ -11,10 +11,12 @@ var questionPaperSchema = new mongoose.Schema({
         required: true
     },
     duration: {
-        type: String
+        type: String,
+        required: true
     },
     maxMarks: {
-        type: String
+        type: String,
+        required: true
     },
     instructions: {
         type: String

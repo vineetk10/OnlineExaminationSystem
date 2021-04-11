@@ -34,6 +34,7 @@ const Home = ()=>{
         <Base title="Online Examination" description="An easy way to give exams and monitor your results">
            <div className="row text-center">
                <div className="header">
+                   <div></div>
                 <h1 className=" header__text text-white">All Question Papers</h1>
                 <span className="header__logo"><IoAddCircleSharp size={50} onClick={handleShow}/></span>
                </div>

@@ -8,15 +8,20 @@ body {
   background: #343a40;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+}
 .header__text{
   transform: translateX(-10%);
   margin-bottom: 100px;
   display: inline-block;
+  order: 1;
 }
 
 .header__logo{
-  float: right;
   height: 200%;
+  order: 2;
 }
 
 .error {

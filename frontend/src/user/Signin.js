@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Base from "../core/Base";
 import { Link, Redirect } from "react-router-dom";
 import {signin, authenticate, isAutheticated, } from "../auth/helper"
+import onlineExam from "./onlineExam.png";
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -76,18 +77,32 @@ const Signin = () => {
   const signInForm = () => {
     return (
       <div className="row">
-        <div className="col-md-6 offset-sm-3 text-left">
-          <form>
+        <div className="col-md-6 text-center">
+          <h1 className="text-warning">Online Examination</h1>
+          <h5 className="text-dark">An easy way to give exams and monitor your results</h5>          
+          <img src={onlineExam} className="img-fluid w-50 rounded-circle" alt=""/>
+        </div>
+        <div className="col-md-4 text-left bg-white p-3 offset-md-1 rounded shadow p-3 mb-5 mt-5">
+          <form>            
             <div className="form-group">
-              <label className="text-light">Email</label>
-              <input value={email} className="form-control" onChange={handleChange("email")} type="email" />
+              <label className="text-secondary">Email</label>
+              <input
+                className="form-control"
+                onChange={handleChange("email")}
+                type="email"
+                value={email}
+              />
             </div>
-
             <div className="form-group">
-              <label className="text-light">Password</label>
-              <input value={password} className="form-control" onChange={handleChange("password")} type="password" />
+              <label className="text-secondary">Password</label>
+              <input
+                onChange={handleChange("password")}
+                className="form-control"
+                type="password"
+                value={password}
+              />
             </div>
-            <button onClick={onSubmit} className="btn btn-success btn-block">Submit</button>
+            <button onClick={onSubmit} className="btn btn-success w-100 rounded mt-2" type="button">Sign Up</button>
           </form>
         </div>
       </div>
@@ -95,12 +110,11 @@ const Signin = () => {
   };
 
   return (
-    <Base title="Sign In page" description="A page for user to sign in!">
+    <Base title="" description="">
       {loadingMessage()}
       {errorMessage()}
       {signInForm()}
-      {performRedirect()}
-      <p className="text-light">{JSON.stringify(values)}</p>
+      {performRedirect()}      
     </Base>
   );
 };

@@ -5,6 +5,7 @@ const { check , validationResult } = require('express-validator');
 
 router.post('/signup',[
     check("firstName","name should be at least 3 characters").isLength({ min: 3 }),
+    check("lastName","name should be at least 3 characters").isLength({ min: 3 }),
     check("email","email is incorrect").isEmail(),
     check("password")
         .isLength({ min: 6 })

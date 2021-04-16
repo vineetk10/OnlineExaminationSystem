@@ -3,7 +3,7 @@ import React from "react";
 const Base = ({
     title="My Title",
     description="My description",
-    className = "bg-dark text-white p-4",
+    className = "text-white p-4",
     children
 })=>(
     <div>
@@ -14,11 +14,20 @@ const Base = ({
             </div>  
             <div className={className}>{children}</div>
         </div> 
-        <footer className="footer bg-dark mt-auto py-3">
-            <div className="container-fluid bg-success text-white text-center">
-                <h4>If you got any questions, feel free to reach out</h4>
-                <button className="btn btn-warning btn-lg">Contact Us</button>
+        <footer className="footer bg-light mt-auto py-3">
+            <div className="row">
+            <div className="col-md-4">
+            <div className="container-fluid bg-light text-dark text-center">
+                <h6>Nav menu will come here</h6>
             </div>
+            </div>
+            <div className="col-md-4">                
+            <div className="container-fluid bg-light text-dark text-center">
+                <h6>If you got any questions, feel free to reach out</h6>
+                <button className="btn btn-warning btn-sm rounded">Contact Us</button>
+            </div>
+            </div>      
+            </div>        
         </footer> 
     </div>    
 )

@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import Base from "../core/Base";
 import { Link } from "react-router-dom";
 import { signup } from "../auth/helper";
+import onlineExam from "./onlineExam.png";
 
 const Signup = () => {
   const [values, setValues] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     error: "",
+    role:2,
     success: false
   });
 
-  const { name, email, password, error, success } = values;
+  const { firstName,lastName, email, password, role, error, success } = values;
 
   const handleChange = name => event => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -21,14 +24,15 @@ const Signup = () => {
   const onSubmit = event => {
     event.preventDefault();
     setValues({ ...values, error: false });
-    signup({ name, email, password })
+    signup({ firstName, lastName, email, password })
       .then(data => {
         if (data.error) {
           setValues({ ...values, error: data.error, success: false });
         } else {
           setValues({
             ...values,
-            name: "",
+            firstName: "",
+            lastName: "",
             email: "",
             password: "",
             error: "",
@@ -42,19 +46,37 @@ const Signup = () => {
   const signUpForm = () => {
     return (
       <div className="row">
-        <div className="col-md-6 offset-sm-3 text-left">
+        <div className="col-md-6 text-center">
+          <h1 className="text-warning">Online Examination</h1>
+          <h5 className="text-dark">An easy way to give exams and monitor your results</h5>          
+          <img src={onlineExam} className="img-fluid w-50 rounded-circle" alt=""/>
+        </div>
+        <div className="col-md-4 text-left bg-white p-3 offset-md-1 rounded shadow p-3 mb-5 mt-5">
           <form>
-            <div className="form-group">
-              <label className="text-light">Name</label>
+            <div className="row">
+            <div className="form-group col-md-6">
+              <label className="text-secondary">First Name</label>
               <input
                 className="form-control"
-                onChange={handleChange("name")}
+                onChange={handleChange("firstName")}
                 type="text"
-                value={name}
+                value={firstName}
+                type="text"
               />
             </div>
+            <div className="form-group col-md-6">
+              <label className="text-secondary">Last Name</label>
+              <input
+                className="form-control"
+                onChange={handleChange("lastName")}
+                type="text"
+                value={lastName}
+                type="text"
+              />
+            </div>
+            </div>            
             <div className="form-group">
-              <label className="text-light">Email</label>
+              <label className="text-secondary">Email</label>
               <input
                 className="form-control"
                 onChange={handleChange("email")}
@@ -62,9 +84,8 @@ const Signup = () => {
                 value={email}
               />
             </div>
-
             <div className="form-group">
-              <label className="text-light">Password</label>
+              <label className="text-secondary">Password</label>
               <input
                 onChange={handleChange("password")}
                 className="form-control"
@@ -72,9 +93,15 @@ const Signup = () => {
                 value={password}
               />
             </div>
-            <button onClick={onSubmit} className="btn btn-success btn-block">
-              Submit
-            </button>
+            {/* <div className="form-group">
+              <select className="custom-select mt-2 p-1 border-secondary rounded" required>
+                <option value="">Select Role</option>
+                <option value="1">Teacher</option>
+                <option value="2">Student</option>
+              </select>
+              <button type="button" className="btn btn-sm border-primary rounded-circle ml-2 text-primary" data-toggle="popover" data-placement="top" data-content="A teacher can create question papers and conduct exams. A student can respond to the exams and check out results">?</button>
+              </div> */}
+            <button onClick={onSubmit} className="btn btn-success w-100 rounded mt-2" type="button">Sign Up</button>            
           </form>
         </div>
       </div>
@@ -84,7 +111,7 @@ const Signup = () => {
   const successMessage = () => {
     return (
       <div className="row">
-        <div className="col-md-6 offset-sm-3 text-left">
+        <div className="col-md-4 offset-sm-7 text-left">
           <div
             className="alert alert-success"
             style={{ display: success ? "" : "none" }}
@@ -100,7 +127,7 @@ const Signup = () => {
   const errorMessage = () => {
     return (
       <div className="row">
-        <div className="col-md-6 offset-sm-3 text-left">
+        <div className="col-md-4 offset-sm-7 text-left">
           <div
             className="alert alert-danger"
             style={{ display: error ? "" : "none" }}
@@ -113,11 +140,11 @@ const Signup = () => {
   };
 
   return (
-    <Base title="Sign up page" description="A page for user to sign up!">
-      {successMessage()}
-      {errorMessage()}
+    <Base title="" description="">
       {signUpForm()}
-      <p className="text-white text-center">{JSON.stringify(values)}</p>
+      {successMessage()}
+      {errorMessage()} 
+      <p className="text-dark">{JSON.stringify(values)}</p>     
     </Base>
   );
 };

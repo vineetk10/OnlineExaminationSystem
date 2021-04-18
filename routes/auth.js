@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var {signout, signup ,signin, isSignedIn} = require("../controllers/auth");
+var {signout, signup ,signin, isSignedIn, forgotPasswordLink,resetPassword} = require("../controllers/auth");
+var {getUserById} = require("./contollers/user");
 const { check , validationResult } = require('express-validator');
+
+router.param("userId",getUserById);
 
 router.post('/signup',[
     check("firstName","name should be at least 3 characters").isLength({ min: 3 }),
@@ -24,6 +27,13 @@ router.post('/signin',[
 signin);
 
 router.post('/signout',signout);
+
+router.post('/forgotpasswordlink',[
+    check("email","please enter a valid email").isEmail()
+],
+forgotPasswordLink);
+
+router.put('/:userId/resetpassword',resetPassword)
 
 router.get('/testroute',isSignedIn,(req,res)=>{
     res.json(req.auth) 

@@ -103,14 +103,22 @@ const Signin = () => {
                 value={password}
               />
             </div>
-            <button onClick={onSubmit} className="btn btn-success w-100 rounded mt-2" type="button">Sign in</button>
-            <div className="border-bottom border-secondary"><p></p></div>
+            <Link          
+          className="nav-link text-danger text-center"
+          to="/forgotPassword"
+        >
+        <u>Forgotten Password?</u>
+        </Link>   
+            <button onClick={onSubmit} className="btn btn-success w-100 rounded mt-2 mb-2" type="button">Sign in</button>                      
+            <div className="border border-warning rounded">
             <Link          
           className="nav-link text-warning text-center"
           to="/signup"
         >
-          Create an  Account?
-        </Link>            
+        Create an  Account?
+        </Link> 
+            </div>
+                       
           </form>
         </div>
       </div>

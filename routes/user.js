@@ -9,4 +9,5 @@ router.param("userId",getUserById);
 router.get("/user/:userId",isSignedIn,isAunthenticated, getUser);
 router.put("/user/:userId",isSignedIn,isAunthenticated, updateUser);
 
+
 module.exports = router;

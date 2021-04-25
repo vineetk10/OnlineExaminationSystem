@@ -16,14 +16,9 @@ const Base = ({
         </div> 
         <footer className="footer bg-light mt-auto py-3">
             <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-8 offset-md-2">                
             <div className="container-fluid bg-light text-dark text-center">
-                <h6>Nav menu will come here</h6>
-            </div>
-            </div>
-            <div className="col-md-4">                
-            <div className="container-fluid bg-light text-dark text-center">
-                <h6>If you got any questions, feel free to reach out</h6>
+                <p>If you got any questions, feel free to reach out</p>
                 <button className="btn btn-warning btn-sm rounded">Contact Us</button>
             </div>
             </div>      

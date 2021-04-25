@@ -105,7 +105,7 @@ const Signin = () => {
             </div>
             <Link          
           className="nav-link text-danger text-center"
-          to="/forgotPassword"
+          to="/forgotpassword"
         >
         <u>Forgotten Password?</u>
         </Link>   

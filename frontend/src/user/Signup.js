@@ -101,7 +101,15 @@ const Signup = () => {
               </select>
               <button type="button" className="btn btn-sm border-primary rounded-circle ml-2 text-primary" data-toggle="popover" data-placement="top" data-content="A teacher can create question papers and conduct exams. A student can respond to the exams and check out results">?</button>
               </div> */}
-            <button onClick={onSubmit} className="btn btn-success w-100 rounded mt-2" type="button">Sign Up</button>            
+            <button onClick={onSubmit} className="btn btn-success w-100 rounded mt-2" type="button">Sign Up</button>   
+            <div className="border mt-2 border-warning rounded">
+            <Link          
+          className="nav-link text-warning text-center"
+          to="/signin"
+        >
+        Sign in?
+        </Link> 
+            </div>         
           </form>
         </div>
       </div>

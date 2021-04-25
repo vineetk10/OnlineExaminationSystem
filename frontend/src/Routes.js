@@ -4,6 +4,7 @@ import Home from "./core/Home"
 import CreateTemplate from "./admin/CreateQuestionPaperTemplate.js"
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
+import ForgotPassword from "./user/ForgotPassword";
 
 const Routes = ()=>{
     return (
@@ -13,6 +14,7 @@ const Routes = ()=>{
                 <Route path="/admin/createTemplate" exact component={CreateTemplate}></Route>
                 <Route path="/signup" exact component={Signup} />
                 <Route path="/signin" exact component={Signin} />
+                <Route path="/forgotpassword" exact component={ForgotPassword} />
             </Switch>
         </BrowserRouter>
     )

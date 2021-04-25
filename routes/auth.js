@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var {signout, signup ,signin, isSignedIn, forgotPasswordLink,resetPassword} = require("../controllers/auth");
-var {getUserById} = require("./contollers/user");
+var {getUserById} = require("../controllers/user");
 const { check , validationResult } = require('express-validator');
 
 router.param("userId",getUserById);
@@ -28,12 +28,18 @@ signin);
 
 router.post('/signout',signout);
 
+//input email id and send link to user
 router.post('/forgotpasswordlink',[
     check("email","please enter a valid email").isEmail()
 ],
 forgotPasswordLink);
 
-router.put('/:userId/resetpassword',resetPassword)
+//will upadte new password
+router.put('/resetpassword/:userId',[check("newPassword")
+.isLength({ min: 6 })
+.withMessage('password must be at least 6 chars long')
+.matches(/\d/)
+.withMessage('must contain a number')],resetPassword)
 
 router.get('/testroute',isSignedIn,(req,res)=>{
     res.json(req.auth) 

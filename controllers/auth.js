@@ -1,7 +1,20 @@
 const User = require("../models/user");
+const API = process.env.REACT_APP_BACKEND;
+const emailId = process.env.GMAIL_ID;
+const emailPassword = process.env.GMAIL_PASSWORD;
 const { check , validationResult } = require('express-validator');
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
+var nodemailer = require('nodemailer');
+const user = require("../models/user");
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    //ToDo: set id and password
+    auth: {
+      user: emailId,
+      pass: emailPassword
+    }
+  });
 
 exports.signup = (req,res)=>{
 
@@ -98,4 +111,67 @@ exports.isAdmin = (req,res,next)=>{
     }
     next();
 }
+// send email with passwrd reset link 
+// To Do: expire link
+exports.forgotPasswordLink = (req,res) => {
+    const {email} = req.body;
+    const errors = validationResult(req)
 
+    if(!errors.isEmpty())
+    {
+        return res.status(422).json({
+            error: errors.array()[0].msg
+        });
+    }
+
+    User.findOne({email},(err,user)=>{
+        if(err){
+            return res.status(400).json({
+                error: "User email does not exist"
+            })
+        } 
+    // create link   
+    var passwordResetLink = API+"/"+user._id+"/resetpassword"
+
+    var mailOptions = {
+        //To Do: set email id
+        from: emailId,
+        to: user.email,
+        subject: 'Online Examination system Password Reset Link',
+        html: "<a>"+passwordResetLink+"</a>"
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            return res.status(400).json({
+                error: "sending email failed"
+            })
+        } else {
+         return res.json({
+             message:'Email sent: '+info.response
+            });
+        }
+      });
+    })
+}
+//update with new password
+exports.resetPassword = (req,res) => {
+    const user = new User(req.profile);
+    User.findByIdAndUpdate(
+        {_id: req.profile._id},
+        {encry_password: user.securePassword(req.body.newPassword) },
+    {new: true, useFindAndModify: false},
+    (err,user) => {
+      if(err){
+        return res.status(400).json({
+          error: "Updating the password is not successful"
+        })
+      }
+      user.salt = undefined;
+      user.encry_password = undefined;
+      user.createdOn = undefined;
+      user.createdAt = undefined;
+       res.json(user);
+    }
+    )
+}

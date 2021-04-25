@@ -60,3 +60,19 @@ export const isAutheticated = () => {
     return false;
   }
 };
+
+export const forgotPassword = user => {
+  return fetch(`${API}/forgotpasswordlink`,{
+    method:"POST",
+    headers:{
+      Accept: "application/json",
+      "Content-Type": "application/json"      
+    },
+    body: JSON.stringify(user)
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+}
+

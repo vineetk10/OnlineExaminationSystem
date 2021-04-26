@@ -93,14 +93,14 @@ const Signup = () => {
                 value={password}
               />
             </div>
-            {/* <div className="form-group">
-              <select className="custom-select mt-2 p-1 border-secondary rounded" required>
-                <option value="">Select Role</option>
-                <option value="1">Teacher</option>
-                <option value="2">Student</option>
+            <div className="form-group">
+              <select className="form-select mt-2 p-1 form-control" required
+               onChange={handleChange("role")}>
+                <option key="">Select Role</option>
+                <option key="1">Teacher</option>
+                <option key="2">Student</option>
               </select>
-              <button type="button" className="btn btn-sm border-primary rounded-circle ml-2 text-primary" data-toggle="popover" data-placement="top" data-content="A teacher can create question papers and conduct exams. A student can respond to the exams and check out results">?</button>
-              </div> */}
+              </div>
             <button onClick={onSubmit} className="btn btn-success w-100 rounded mt-2" type="button">Sign Up</button>   
             <div className="border mt-2 border-warning rounded">
             <Link          

@@ -9,7 +9,6 @@ var nodemailer = require('nodemailer');
 const user = require("../models/user");
 var transporter = nodemailer.createTransport({
     service: 'gmail',
-    //ToDo: set id and password
     auth: {
       user: emailId,
       pass: emailPassword
@@ -134,7 +133,6 @@ exports.forgotPasswordLink = (req,res) => {
     var passwordResetLink = API+"/"+user._id+"/resetpassword"
 
     var mailOptions = {
-        //To Do: set email id
         from: emailId,
         to: user.email,
         subject: 'Online Examination system Password Reset Link',

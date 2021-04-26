@@ -31,14 +31,13 @@ const Home = ()=>{
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
-        <Base title="Online Examination" description="An easy way to give exams and monitor your results">
+        <Base title="Online Examination" description="My Question Papers">
            <div className="row text-center">
                <div className="header">
                    <div></div>
-                <h1 className=" header__text text-white">All Question Papers</h1>
-                <span className="header__logo"><IoAddCircleSharp size={50} onClick={handleShow}/></span>
+                {/* <h5 className=" header__text text-secondary">All Question Papers</h5> */}
+                <span className="header__logo"><IoAddCircleSharp style={{color:"#FFCA2C"}} size={50} onClick={handleShow}/></span>
                </div>
-                
                 <div className="row">
                     {papers.map((paper,index)=>{
                         return(

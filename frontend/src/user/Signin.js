@@ -59,7 +59,7 @@ const Signin = () => {
         })
       }
     })
-    .catch(console.log("Sign in failed"))
+    .catch(err=>console.log(err))
   }
 
   const performRedirect = () =>{

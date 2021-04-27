@@ -5,6 +5,7 @@ import CreateTemplate from "./admin/CreateQuestionPaperTemplate.js"
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
 import ForgotPassword from "./user/ForgotPassword";
+import ResetPassword from "./user/ResetPassword";
 
 const Routes = ()=>{
     return (
@@ -15,6 +16,7 @@ const Routes = ()=>{
                 <Route path="/signup" exact component={Signup} />
                 <Route path="/signin" exact component={Signin} />
                 <Route path="/forgotpassword" exact component={ForgotPassword} />
+                <Route path="/resetpassword/:userId" exact component={ResetPassword}/>
             </Switch>
         </BrowserRouter>
     )

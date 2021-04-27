@@ -1,5 +1,5 @@
 const User = require("../models/user");
-const API = process.env.REACT_APP_BACKEND;
+const API = process.env.REACT_APP_FRONTEND;
 const emailId = process.env.GMAIL_ID;
 const emailPassword = process.env.GMAIL_PASSWORD;
 const { check , validationResult } = require('express-validator');
@@ -130,13 +130,13 @@ exports.forgotPasswordLink = (req,res) => {
             })
         } 
     // create link   
-    var passwordResetLink = API+"/"+user._id+"/resetpassword"
+    var passwordResetLink = API+"resetpassword/"+user._id;
 
     var mailOptions = {
         from: emailId,
         to: user.email,
         subject: 'Online Examination system Password Reset Link',
-        html: "<a>"+passwordResetLink+"</a>"
+        html: `<a href=${passwordResetLink}>`+passwordResetLink+"</a>"
       };
       
       transporter.sendMail(mailOptions, function(error, info){
@@ -157,7 +157,7 @@ exports.resetPassword = (req,res) => {
     const user = new User(req.profile);
     User.findByIdAndUpdate(
         {_id: req.profile._id},
-        {encry_password: user.securePassword(req.body.newPassword) },
+        {encry_password: user.securePassword(req.body.password) },
     {new: true, useFindAndModify: false},
     (err,user) => {
       if(err){
@@ -169,7 +169,7 @@ exports.resetPassword = (req,res) => {
       user.encry_password = undefined;
       user.createdOn = undefined;
       user.createdAt = undefined;
-       res.json(user);
+      return res.json(user);
     }
     )
 }

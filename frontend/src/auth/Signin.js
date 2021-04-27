@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Base from "../core/Base";
 import { Link, Redirect } from "react-router-dom";
-import {signin, authenticate, isAutheticated, } from "../auth/helper"
+import {signin, authenticate, isAutheticated, } from "../auth/helper/authapicalls"
 import onlineExam from "./onlineExam.png";
 
 const Signin = () => {
@@ -70,8 +70,8 @@ const Signin = () => {
         return <p>redirect to user dashboard</p>
       }
     }
-    // if(isAutheticated){
-    //   return <Redirect to="/"/>;
+    // if(!isAutheticated){
+    //   return <Redirect to="/signin"/>;
     // }
   }
 

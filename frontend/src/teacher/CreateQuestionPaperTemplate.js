@@ -17,7 +17,7 @@ const CreateTemplate = ()=>{
     window.survey = new Survey.Model(questionPaperJson);
     
     const AddIntoJson = (type)=>{
-        if(type=="pages"){
+        if(type === "pages"){
             /*json.pages.push({"name":"page2"});*/
             var obj = {elements : [{type:"text",name:"Question1"}],name:"page1"}
             setQuestionPaperJson({...questionPaperJson,pages:[...questionPaperJson.pages,obj]});

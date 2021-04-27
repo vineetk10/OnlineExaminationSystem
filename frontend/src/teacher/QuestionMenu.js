@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { signout, isAutheticated } from "../auth/helper";
+import { signout, isAutheticated } from "../auth/helper/authapicalls";
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
@@ -38,7 +38,7 @@ const QuestionMenu = ({ history,paperId }) => (
       )}
       {isAutheticated() && isAutheticated().user.role === 1  && (
         <li className="nav-item">
-        <Link style={currentTab(history, "/editquestionpaper")} className="nav-link" to={`/editquestionpaper/${paperId}`}>
+        <Link style={currentTab(history, `/editquestionpaper/${paperId}`)} className="nav-link" to={`/editquestionpaper/${paperId}`}>
           Edit Paper
         </Link>
       </li>

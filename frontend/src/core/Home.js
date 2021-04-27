@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "../styles.css";
 import Base from './Base';
-import getQuestionPapers from "./helper/coreapicalls"
+import {getQuestionPapers} from "./helper/coreapicalls"
 import Card from "./Card"
 import {IoAddCircleSharp} from 'react-icons/io5'
 import Create from "../admin/CreateQuestionPaper.js"

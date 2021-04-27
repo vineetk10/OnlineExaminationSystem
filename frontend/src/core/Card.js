@@ -1,19 +1,15 @@
 import React, {useState} from "react"
 import { MdDelete } from "react-icons/md";
 import { IoTime,IoBook } from "react-icons/io5";
-import { selectQuestionPaper } from './helper/coreapicalls';
 import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
+
 const Card = ({paper})=>{
 
     const paperTitle = paper ? paper.paperTitle : "";
     const subject = paper ? paper.subject : ""; 
     const duration = paper ? paper.duration: "";
     const maxMarks = paper ? paper.maxMarks: "";
-    const selectProduct = () => {
-        selectQuestionPaper(paper, () => {
-            return <Redirect to="admin/createTemplate" />
-        })
-    }
 
     return (
         <div className="card text-dark bg-white shadow"  style={{width: "18rem"}}>
@@ -43,15 +39,14 @@ const Card = ({paper})=>{
             </div>
             <div className="row m-2">
             <div className="col-md-6">
-            <button className="btn w-100 btn-outline-primary rounded"
-            onClick={selectProduct}>
-                Edit
-            </button>
+                <Link to={`/editquestionpaper/${paper._id}`} className="btn w-100 btn-outline-primary rounded">
+                    Edit
+                </Link>
             </div>
             <div className="col-md-6">
-            <button className="btn btn-outline-warning w-100 rounded">
-                View
-            </button>
+            <Link to={`/viewquestionpaper/${paper._id}`} className="btn w-100 btn-outline-warning rounded">
+                    View
+                </Link>
             </div>
             </div>                       
         </div>

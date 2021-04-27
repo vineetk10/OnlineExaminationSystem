@@ -27,7 +27,7 @@ const ShowModal = ({show,handleClose})=>{
         }
       }
 
-    const handleChange = name=>event=>{
+    const handleChange = name => event => {
         let errors = values.error;
         errors.name =  event.target.value.length == 0 ? [name]+" is compulsory" : '';
         // switch(name)

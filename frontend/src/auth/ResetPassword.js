@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Base from "../core/Base";
 import { Link, Redirect } from "react-router-dom";
-import {signin, authenticate, isAutheticated, resetPassword, } from "../auth/helper"
-import onlineExam from "./onlineExam.png";
+import {signin, authenticate, isAutheticated, resetPassword, } from "../auth/helper/authapicalls"
+import onlineExam from "../core/onlineExam.png";
 
 export default function ForgotPassword({match}) {
 

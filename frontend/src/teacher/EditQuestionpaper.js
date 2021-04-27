@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import Base from '../core/Base';
 import QuestionMenu from './QuestionMenu';
-import { getQuestionPaperById } from './../core/helper/coreapicalls';
+import { getQuestionPaperById } from './helper/questionpaperapicalls';
 
 const EditQuestionpaper= ({match}) => {
 

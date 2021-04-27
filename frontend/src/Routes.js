@@ -1,13 +1,13 @@
 import React from 'react'
 import {BrowserRouter, Switch, Route} from "react-router-dom"
 import Home from "./core/Home"
-import CreateTemplate from "./admin/CreateQuestionPaperTemplate.js"
-import Signup from "./user/Signup";
-import Signin from "./user/Signin";
-import ForgotPassword from "./user/ForgotPassword";
-import ResetPassword from "./user/ResetPassword";
-import EditQuestionpaper from './admin/EditQuestionpaper';
-import EditQuestion from './admin/EditQuestions';
+import CreateTemplate from "./teacher/CreateQuestionPaperTemplate.js"
+import Signup from "./auth/Signup";
+import Signin from "./auth/Signin";
+import ForgotPassword from "./auth/ForgotPassword";
+import ResetPassword from "./auth/ResetPassword";
+import EditQuestionpaper from './teacher/EditQuestionpaper';
+import EditQuestion from './teacher/EditQuestions';
 
 const Routes = ()=>{
     return (

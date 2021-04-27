@@ -1,10 +1,9 @@
 import React, {useState} from "react"
 import { MdDelete } from "react-icons/md";
 import { IoTime,IoBook } from "react-icons/io5";
-import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 
-const Card = ({paper})=>{
+const QuestionPaperCard = ({paper})=>{
 
     const paperTitle = paper ? paper.paperTitle : "";
     const subject = paper ? paper.subject : ""; 
@@ -53,4 +52,4 @@ const Card = ({paper})=>{
     )
 }
 
-export default Card
+export default QuestionPaperCard;

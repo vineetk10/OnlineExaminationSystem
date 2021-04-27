@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Base from "../core/Base";
 import { Link } from "react-router-dom";
-import { signup } from "../auth/helper";
-import onlineExam from "./onlineExam.png";
+import { signup } from "../auth/helper/authapicalls";
+import onlineExam from "../core/onlineExam.png";
 
 const Signup = () => {
   const [values, setValues] = useState({

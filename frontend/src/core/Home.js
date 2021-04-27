@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import "../styles.css";
 import Base from './Base';
-import {getQuestionPapers} from "./helper/coreapicalls"
-import Card from "./Card"
 import {IoAddCircleSharp} from 'react-icons/io5'
-import Create from "../admin/CreateQuestionPaper.js"
-import { Button,Modal } from 'react-bootstrap'
-import ShowModal from './ShowModal'
+import QuestionPaperCard from './QuestionPaperCard';
+import CreateQuestionPaperModal from './CreateQuestionPaperModal';
+import { getQuestionPapers } from './../teacher/helper/questionpaperapicalls';
 const Home = ()=>{
 
     const [papers,setPapers] = useState([])
@@ -42,13 +40,13 @@ const Home = ()=>{
                     {papers.map((paper,index)=>{
                         return(
                             <div key={index} className="col-4 mb-4">
-                                <Card paper={paper}/>
+                                <QuestionPaperCard paper={paper}/>
                              </div>   
                         )
                     })}
                 </div>
            </div>
-           <ShowModal show ={show} handleClose={handleClose}/>
+           <CreateQuestionPaperModal show ={show} handleClose={handleClose}/>
            
         </Base>
     )

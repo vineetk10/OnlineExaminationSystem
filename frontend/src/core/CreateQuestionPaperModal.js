@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
-import { Button,Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
-import {Create} from '../admin/CreateQuestionPaper'
+import Create from '../teacher/CreateQuestionPaper';
 
-const ShowModal = ({show,handleClose})=>{
+const CreateQuestionPaperModal = ({show,handleClose})=>{
     const [values,setValues] = useState({
         paperName: "",
         subjectName: "",
@@ -29,7 +29,7 @@ const ShowModal = ({show,handleClose})=>{
 
     const handleChange = name => event => {
         let errors = values.error;
-        errors.name =  event.target.value.length == 0 ? [name]+" is compulsory" : '';
+        errors.name =  event.target.value.length === 0 ? [name]+" is compulsory" : '';
         // switch(name)
         // {
         //     case 'paperName':
@@ -115,4 +115,4 @@ const ShowModal = ({show,handleClose})=>{
     )
 } 
 
-export default ShowModal;
+export default CreateQuestionPaperModal;

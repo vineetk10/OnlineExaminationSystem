@@ -19,7 +19,7 @@ const Base = ({
             <div className="col-md-8 offset-md-2">                
             <div className="container-fluid bg-light text-dark text-center">
                 <p>If you have any questions, feel free to reach out!</p>
-                <button className="btn btn-warning btn-sm rounded">Contact Us</button>
+                <button className="btn btn-outline-warning btn-sm rounded">Contact Us</button>
             </div>
             </div>      
             </div>        

@@ -29,23 +29,24 @@ const ShowModal = ({show,handleClose})=>{
 
     const handleChange = name=>event=>{
         let errors = values.error;
-        switch(name)
-        {
-            case 'paperName':
-                errors.paperName = event.target.value.length == 0 ? "Paper Name is compulsory" : '';
-                break;
-            case 'subjectName':
-                errors.subjectName = event.target.value.length == 0 ? "Subject Name is compulsory" : '';
-                break
-            case 'duration':
-                errors.duration = event.target.value.length == 0 ? "Duration is compulsory" : '';
-                break;
-            case 'marks':
-                errors.marks = event.target.value.length == 0 ? "Marks is compulsory" : '';
-                break
-            default:
-                break;
-        }
+        errors.name =  event.target.value.length == 0 ? [name]+" is compulsory" : '';
+        // switch(name)
+        // {
+        //     case 'paperName':
+        //         errors.paperName = event.target.value.length == 0 ? "Paper Name is compulsory" : '';
+        //         break;
+        //     case 'subjectName':
+        //         errors.subjectName = event.target.value.length == 0 ? "Subject Name is compulsory" : '';
+        //         break
+        //     case 'duration':
+        //         errors.duration = event.target.value.length == 0 ? "Duration is compulsory" : '';
+        //         break;
+        //     case 'marks':
+        //         errors.marks = event.target.value.length == 0 ? "Marks is compulsory" : '';
+        //         break
+        //     default:
+        //         break;
+        // }
         setValues({...values,error: errors,[name]:event.target.value})
     }
 
@@ -105,13 +106,13 @@ const ShowModal = ({show,handleClose})=>{
                 </form>
                 </Modal.Body>
                 <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <button className="btn btn-outline-secondary rounded" onClick={handleClose}>
                     Close
-                </Button>
-                <button onClick={onCreate} className="btn btn-primary">Create Survey</button>
+                </button>
+                <button onClick={onCreate} className="btn btn-warning rounded">Create Survey</button>
                 </Modal.Footer>
         </Modal>
     )
 } 
 
-export default ShowModal
+export default ShowModal;

@@ -1,7 +1,8 @@
 const QuestionPaper = require("../models/questionPaper")
 
 exports.getQuestionPaperById = (req,res,next,id)=>{
-    QuestionPaper.findOne(id).exec((err,questionPaper)=>{
+    QuestionPaper.findById(id)
+    .exec((err,questionPaper)=>{
         if(err)
         {
             return res.status(400).json({
@@ -11,6 +12,10 @@ exports.getQuestionPaperById = (req,res,next,id)=>{
         req.questionPaper = questionPaper;
         next();
     })
+}
+
+exports.getQuestionPaper = (req,res) => {
+        return res.json(req.questionPaper);
 }
 
 exports.getAllQuestionPapers = (req,res)=>{
@@ -47,3 +52,4 @@ exports.createQuestionPaper = (req, res)=>{
         })    
    });
 }
+

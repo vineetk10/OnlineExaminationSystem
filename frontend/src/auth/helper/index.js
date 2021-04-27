@@ -76,3 +76,18 @@ export const forgotPassword = user => {
     .catch(err => console.log(err));
 }
 
+export const resetPassword = (props) => {
+  return fetch(`${API}resetpassword/${props.userId}`,{
+    method:"PUT",
+    headers:{
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({"password":props.password})
+  })
+    .then(response => {
+      return response;
+    })
+    .catch(err => console.log(err));
+}
+

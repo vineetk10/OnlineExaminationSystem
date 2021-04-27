@@ -1,6 +1,6 @@
 import {API} from "../../backend"
 
-const getQuestionPapers = ()=>{
+export const getQuestionPapers = ()=>{
     return fetch(`${API}/questionPapers`,{
         method: "GET"
     })
@@ -10,11 +10,12 @@ const getQuestionPapers = ()=>{
     .catch(err=>console.log(err))
 }
 
-export const selectQuestionPaper =(paper,next) => {
-    console.log(paper)
-    localStorage.setItem("selectedPaper", JSON.stringify(paper));
-    next()
+export const getQuestionPaperById = (paperId) => {
+    return fetch(`${API}/questionPaper/${paperId}`,{
+        method:"GET",
+    })
+    .then(response=>{
+        return response.json();
+    })
+    .catch(err=>console.log(err))
 }
-
-export default getQuestionPapers
-

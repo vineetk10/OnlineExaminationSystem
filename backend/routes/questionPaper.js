@@ -6,7 +6,7 @@ const {getQuestionPaperById, getAllQuestionPapers, createQuestionPaper, getQuest
 
 router.param("questionPaperId", getQuestionPaperById);
 
-router.get("/questionPapers", getAllQuestionPapers);
+router.post("/questionPapers", getAllQuestionPapers);
 router.get("/questionPaper/:questionPaperId",getQuestionPaper);
 
 router.post("/questionPaper/create", createQuestionPaper)

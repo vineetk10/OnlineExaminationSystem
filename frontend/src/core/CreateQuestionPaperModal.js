@@ -2,7 +2,8 @@ import React,{useState} from 'react'
 import { Modal } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
 import Create from '../teacher/CreateQuestionPaper';
-
+import {isAutheticated} from '../auth/helper/authapicalls'
+const {user}= isAutheticated();
 const CreateQuestionPaperModal = ({show,handleClose})=>{
     const [values,setValues] = useState({
         paperName: "",
@@ -66,7 +67,7 @@ const CreateQuestionPaperModal = ({show,handleClose})=>{
             console.log("Invalid form");
             return;
         }
-        Create({paperTitle:paperName,subject:subjectName,duration,maxMarks:marks})
+        Create({paperTitle:paperName,subject:subjectName,duration,maxMarks:marks,createdBy:user._id})
         setRedirect(true)
     }
 

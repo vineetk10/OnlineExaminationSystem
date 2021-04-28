@@ -53,9 +53,11 @@ const Signin = () => {
     .then(data =>{
       if(data.error){
         setValues({...values,error:data.error,loading:false})
+        console.log(data.error)
       }else{
         authenticate(data,() => {
           setValues({...values,didRedirect:true})
+          console.log("sign in successful")
         })
       }
     })

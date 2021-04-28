@@ -36,6 +36,12 @@ const EditQuestionpaper= ({match}) => {
           subjectName: data.subject,
           duration: data.duration,
           marks:data.maxMarks,
+          error: {
+            paperName: "",
+            subjectName: "",
+            duration: "",
+            marks:""
+        }
         })
       }
     })
@@ -47,7 +53,7 @@ const EditQuestionpaper= ({match}) => {
 
   const handleChange = name => event => {
     let errors = questionpaper.error;
-    errors.name =  event.target.value.length == 0 ? [name]+" is compulsory" : '';
+    errors[name] =  event.target.value.length === 0 ? [name]+" is compulsory" : '';
     setQuestionpaper({...questionpaper,error: errors,[name]:event.target.value})
 }
 
@@ -79,7 +85,7 @@ const EditQuestionpaper= ({match}) => {
                         <span className="error">{error.marks}</span>}
                         <br/>
                     </div>
-                    <button className="btn w-50 btn-warning rounded">Update</button>
+                    <button className="btn w-50 btn-warning rounded ml-25">Update</button>
                 </form>
       </div>
     )

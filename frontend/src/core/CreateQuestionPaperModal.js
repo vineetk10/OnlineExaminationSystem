@@ -29,24 +29,7 @@ const CreateQuestionPaperModal = ({show,handleClose})=>{
 
     const handleChange = name => event => {
         let errors = values.error;
-        errors.name =  event.target.value.length === 0 ? [name]+" is compulsory" : '';
-        // switch(name)
-        // {
-        //     case 'paperName':
-        //         errors.paperName = event.target.value.length == 0 ? "Paper Name is compulsory" : '';
-        //         break;
-        //     case 'subjectName':
-        //         errors.subjectName = event.target.value.length == 0 ? "Subject Name is compulsory" : '';
-        //         break
-        //     case 'duration':
-        //         errors.duration = event.target.value.length == 0 ? "Duration is compulsory" : '';
-        //         break;
-        //     case 'marks':
-        //         errors.marks = event.target.value.length == 0 ? "Marks is compulsory" : '';
-        //         break
-        //     default:
-        //         break;
-        // }
+        errors[name] =  event.target.value.length === 0 ? [name]+" is compulsory" : '';
         setValues({...values,error: errors,[name]:event.target.value})
     }
 

@@ -53,3 +53,13 @@ exports.createQuestionPaper = (req, res)=>{
    });
 }
 
+exports.deleteQuestionPaper = (req,res)=>{
+    QuestionPaper.findByIdAndDelete(req.body.questionPaperId,(err,paper)=>{
+        if (err){
+            console.log(err)
+        }
+        else{
+            console.log("Deleted : ", paper);
+        }
+    })
+}

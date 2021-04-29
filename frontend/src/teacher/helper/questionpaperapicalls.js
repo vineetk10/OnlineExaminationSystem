@@ -1,11 +1,12 @@
 import {API} from "../../backend"
 
-export const getQuestionPapers = (userId)=>{
-    return fetch(`${API}/questionPapers`,{
+export const getQuestionPapers = (userId,token)=>{
+    return fetch(`${API}/questionPapers/${userId}`,{
         method: "POST",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
           },
         body:JSON.stringify({"userId":userId})
     })

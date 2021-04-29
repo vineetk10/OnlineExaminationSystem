@@ -6,14 +6,14 @@ import QuestionPaperCard from './QuestionPaperCard';
 import CreateQuestionPaperModal from './CreateQuestionPaperModal';
 import { getQuestionPapers } from './../teacher/helper/questionpaperapicalls';
 import {isAutheticated} from '../auth/helper/authapicalls'
-const {user}= isAutheticated();
+const {user,token}= isAutheticated();
 const Home = ()=>{
 
     const [papers,setPapers] = useState([])
     const [error,setError] = useState(false)
 
     const loadAllPapers = ()=>{
-        getQuestionPapers(user._id).then(data=>{
+        getQuestionPapers(user._id,token).then(data=>{
             if(data.error){
                 setError(data.error)
             }

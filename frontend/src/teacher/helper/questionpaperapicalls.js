@@ -46,6 +46,6 @@ export const updateQuestionPaperById = (paperId, questionPaper) => {
           },
         body:JSON.stringify(questionPaper)
     }).then(response => {
-        return response.jason()
+        return response.json()
     }).catch(err => console.log(err))
 }

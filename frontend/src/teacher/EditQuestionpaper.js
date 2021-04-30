@@ -75,12 +75,12 @@ const EditQuestionpaper= ({match}) => {
   const handleChange = name => event => {
     let errors = questionpaper.error;
     errors[name] =  event.target.value.length === 0 ? [name]+" is compulsory" : '';
-    setQuestionpaper({...questionpaper,error: errors,[name]:event.target.value})
+    setQuestionpaper({...questionpaper,error: errors,[name]:event.target.value,update:true})
 }
 
   const questionPaperForm = () => {
     return(
-      <div className="col-md-6 offset-md-3 mt-3">
+      <div className="col-md-6 offset-md-3 mt-3 text-center">
           <form>
                     <div className="form-group">
                         <input type="textbox" className="form-control" onChange={handleChange("paperName")} value={paperName} placeholder="Enter Question Paper Name"/>
@@ -106,8 +106,8 @@ const EditQuestionpaper= ({match}) => {
                         <span className="error">{error.marks}</span>}
                         <br/>
                     </div>
-                    {!update && (<button className="btn w-50 btn-warning rounded ml-25" disabled onClick={onSubmit}>Update</button>)}
-                    {update &&(<button className="btn w-50 btn-warning rounded ml-25" onClick={onSubmit}>Update</button>)}
+                    {!update && (<button className="btn w-50 btn-warning rounded" disabled onClick={onSubmit}>Update</button>)}
+                    {update &&(<button className="btn w-50 btn-warning rounded" onClick={onSubmit}>Update</button>)}
                 </form>
       </div>
     )

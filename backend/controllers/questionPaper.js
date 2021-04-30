@@ -63,3 +63,20 @@ exports.deleteQuestionPaper = (req,res)=>{
         }
     })
 }
+
+exports.updateQuestionPaper = (req,res) => {
+
+    QuestionPaper.findByIdAndUpdate(
+        { _id: req.questionPaper._id },
+        { $set: req.body },
+        { new: true, useFindAndModify: false },
+        (err, questionPaper) => {
+         if (err) {
+         return res.status(400).json({
+              error: "You are not authorized to update this user"
+         });
+        }
+        res.json(questionPaper);
+        }
+    )
+}

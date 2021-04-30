@@ -49,7 +49,7 @@ const CreateQuestionPaperModal = ({show,handleClose})=>{
             console.log("Invalid form");
             return;
         }
-        Create({paperTitle:paperName,subject:subjectName,duration,maxMarks:marks})
+        Create({paperTitle:paperName,subject:subjectName,duration,maxMarks:marks,createdBy:user._id})
         setRedirect(true)
     }
 

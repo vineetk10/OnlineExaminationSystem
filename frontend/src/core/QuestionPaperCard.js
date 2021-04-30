@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import { MdDelete } from "react-icons/md";
 import { IoTime,IoBook } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
+import { deleteQuestionPaper } from '../teacher/helper/questionpaperapicalls';
 const QuestionPaperCard = ({paper})=>{
 
     const paperTitle = paper ? paper.paperTitle : "";
@@ -10,12 +10,17 @@ const QuestionPaperCard = ({paper})=>{
     const duration = paper ? paper.duration: "";
     const maxMarks = paper ? paper.maxMarks: "";
 
+    const callQuestionPaperDelete = (questionPaperId)=>{
+        deleteQuestionPaper(questionPaperId)
+        .then()
+    }
+
     return (
         <div className="card text-dark bg-white shadow"  style={{width: "18rem"}}>
             <div className="card-header"><div className="row">
             <div className="col-md-3">
                 <button className="btn btn-danger rounded">
-                <MdDelete></MdDelete>
+                <MdDelete onClick={()=>callQuestionPaperDelete(paper._id)}></MdDelete>
                 </button>
                 </div>
                 <div className="col-md-9">

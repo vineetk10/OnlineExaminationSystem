@@ -22,7 +22,7 @@ exports.getAllQuestionPapers = (req,res)=>{
     let limit = req.query.limit ? parseInt(req.query.limit) : 8;
     let sortBy = req.query.sortBy ? parseInt(req.query.sortBy) : "_id";
 
-    QuestionPaper.find()
+    QuestionPaper.find({createdBy:req.body.userId})
     .select("-questions")
     .sort([[sortBy, "asc"]])
     .limit(limit)
@@ -53,3 +53,13 @@ exports.createQuestionPaper = (req, res)=>{
    });
 }
 
+exports.deleteQuestionPaper = (req,res)=>{
+    QuestionPaper.findByIdAndDelete(req.body.questionPaperId,(err,paper)=>{
+        if (err){
+            console.log(err)
+        }
+        else{
+            console.log("Deleted : ", paper);
+        }
+    })
+}

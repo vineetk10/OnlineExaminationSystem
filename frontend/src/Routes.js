@@ -8,12 +8,13 @@ import ForgotPassword from "./auth/ForgotPassword";
 import ResetPassword from "./auth/ResetPassword";
 import EditQuestionpaper from './teacher/EditQuestionpaper';
 import EditQuestion from './teacher/EditQuestions';
+import TeacherRoute from './auth/helper/TeacherRoutes';
 
 const Routes = ()=>{
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={Home}/>
+                <TeacherRoute path="/" exact component={Home}/>
                 <Route path="/admin/createTemplate" exact component={CreateTemplate}/>
                 <Route path="/signup" exact component={Signup} />
                 <Route path="/signin" exact component={Signin} />

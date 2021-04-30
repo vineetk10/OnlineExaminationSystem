@@ -53,9 +53,11 @@ const Signin = () => {
     .then(data =>{
       if(data.error){
         setValues({...values,error:data.error,loading:false})
+        console.log(data.error)
       }else{
         authenticate(data,() => {
           setValues({...values,didRedirect:true})
+          console.log("sign in successful")
         })
       }
     })
@@ -64,7 +66,7 @@ const Signin = () => {
 
   const performRedirect = () =>{
     if(didRedirect){
-      if(user && user.role === 1){
+      if(user && user.role <2){
         return <Redirect to="/"/>
       }else{
         return <p>redirect to user dashboard</p>

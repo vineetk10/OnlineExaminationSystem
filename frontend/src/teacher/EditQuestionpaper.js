@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import Base from '../core/Base';
 import QuestionMenu from './QuestionMenu';
-import { getQuestionPaperById } from './helper/questionpaperapicalls';
+import { getQuestionPaperById, updateQuestionPaperById } from './helper/questionpaperapicalls';
 
 const EditQuestionpaper= ({match}) => {
 
@@ -20,7 +20,10 @@ const EditQuestionpaper= ({match}) => {
     notfound:true,
     success: false
   })
-  const [reload, setReload] = useState(false)
+
+  const [errors,setErrors] = useState(false)
+  const [success,setSuccess] = useState(false)
+
   const {paperName,subjectName,duration,marks,error,success,notfound,paperId} = questionpaper
 
   const preload = (paperId) => {
@@ -50,6 +53,24 @@ const EditQuestionpaper= ({match}) => {
   useEffect(() => {
     preload(match.params.paperId)
   }, [])
+
+  const onSubmit = (event) =>{
+    event.preventDefault()
+    const refactoredQp = {
+      paperTitle:questionpaper.paperName,
+      subject:questionpaper.subjectName,
+      duration:questionpaper.duration,
+      maxMarks: questionpaper.marks
+    }
+    updateQuestionPaperById(match.params.paperId, refactoredQp).then(data => {
+        if(data.error){
+          setErrors(true)
+        }else{
+          setErrors("")
+          SetSuccess(true)
+        }
+    })
+  }
 
   const handleChange = name => event => {
     let errors = questionpaper.error;
@@ -85,7 +106,7 @@ const EditQuestionpaper= ({match}) => {
                         <span className="error">{error.marks}</span>}
                         <br/>
                     </div>
-                    <button className="btn w-50 btn-warning rounded ml-25">Update</button>
+                    <button className="btn w-50 btn-warning rounded ml-25" onClick="onSubmit">Update</button>
                 </form>
       </div>
     )

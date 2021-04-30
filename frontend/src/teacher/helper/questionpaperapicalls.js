@@ -36,3 +36,16 @@ export const deleteQuestionPaper = (questionPaperId) =>{
         body:JSON.stringify({"questionPaperId":questionPaperId})
     })
 }
+
+export const updateQuestionPaperById = (paperId, questionPaper) => {
+    return fetch(`${API}/questionPaper/update/${paperId}`,{
+        method:"PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+        body:JSON.stringify(questionPaper)
+    }).then(response => {
+        return response.jason()
+    }).catch(err => console.log(err))
+}

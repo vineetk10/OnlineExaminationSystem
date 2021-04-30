@@ -17,14 +17,14 @@ const EditQuestionpaper= ({match}) => {
             duration: "Duration is compulsory",
             marks:"Marks is compulsory"
         },
-    notfound:true,
+    update:false,
     success: false
   })
 
   const [errors,setErrors] = useState(false)
   const [success,setSuccess] = useState(false)
 
-  const {paperName,subjectName,duration,marks,error,paperId} = questionpaper
+  const {paperName,subjectName,duration,marks,error,update,paperId} = questionpaper
 
   const preload = (paperId) => {
     getQuestionPaperById(paperId).then(data => {
@@ -106,7 +106,8 @@ const EditQuestionpaper= ({match}) => {
                         <span className="error">{error.marks}</span>}
                         <br/>
                     </div>
-                    <button className="btn w-50 btn-warning rounded ml-25" onClick={onSubmit}>Update</button>
+                    {!update && (<button className="btn w-50 btn-warning rounded ml-25" disabled onClick={onSubmit}>Update</button>)}
+                    {update &&(<button className="btn w-50 btn-warning rounded ml-25" onClick={onSubmit}>Update</button>)}
                 </form>
       </div>
     )

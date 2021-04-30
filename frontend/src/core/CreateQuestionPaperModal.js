@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { Modal } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
 import Create from '../teacher/CreateQuestionPaper';
+import { isAutheticated } from './../auth/helper/authapicalls';
 
 const CreateQuestionPaperModal = ({show,handleClose})=>{
     const [values,setValues] = useState({
@@ -20,6 +21,7 @@ const CreateQuestionPaperModal = ({show,handleClose})=>{
 
     const {paperName,subjectName,duration,marks,error,success} = values
     const [redirect,setRedirect] = useState(false);
+    const {user} = isAutheticated()
 
     const getARedirect =(redirect)=>{
         if(redirect){

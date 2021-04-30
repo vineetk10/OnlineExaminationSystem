@@ -12,7 +12,8 @@ const QuestionPaperCard = ({paper})=>{
 
     const callQuestionPaperDelete = (questionPaperId)=>{
         deleteQuestionPaper(questionPaperId)
-        .then()
+        .then(()=>window.location.reload())
+        .catch(err=>console.log(err))
     }
 
     return (

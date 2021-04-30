@@ -35,6 +35,10 @@ export const deleteQuestionPaper = (questionPaperId) =>{
           },
         body:JSON.stringify({"questionPaperId":questionPaperId})
     })
+    .then(response=>{
+        return response.json();
+    })
+    .catch(err=>console.log(err))
 }
 
 export const updateQuestionPaperById = (paperId, questionPaper) => {

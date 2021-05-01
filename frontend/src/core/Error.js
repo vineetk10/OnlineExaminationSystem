@@ -1,18 +1,16 @@
-import React,{useState,useEffect} from 'react'
+import React,{useEffect} from 'react'
 
-const Error = (props) => {
+const Error = ({errorMessage, setErrorMessage}) => {
 
-    const [errorMessage,setErrorMessage] = useState(props.errorMessage);
-
-    useEffect(() => {
-      setTimeout(() => {
-        setErrorMessage(false);
-      }, 3000);
-    });
+  useEffect(() => {
+    setTimeout(() => {
+      setErrorMessage("")
+    }, 5000);
+   }, [errorMessage])
 
     return(
-      <div className="alert alert-danger mt-3"
-    style={{display: errorMessage? "display-block" : "none"}}>
+      <div className="alert alert-danger mt-3 col-md-4 offset-md-8 text-center"
+    style={{display: errorMessage? "" : "none"}}>
       <h4>{errorMessage}</h4>
     </div>
     )    

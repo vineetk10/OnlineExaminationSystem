@@ -53,7 +53,7 @@ const EditQuestionpaper= ({match}) => {
 
   useEffect(() => {
     preload(match.params.paperId)
-  }, [])
+  },[])
 
   const onSubmit = (event) =>{
     event.preventDefault()
@@ -69,6 +69,7 @@ const EditQuestionpaper= ({match}) => {
         }else{
           setErrors("")
           setSuccess("Update Successful!")
+          setQuestionpaper({...questionpaper,update:false})
         }
     })
   }
@@ -117,9 +118,8 @@ const EditQuestionpaper= ({match}) => {
     <Base title="" description="">
       <QuestionMenu paperId = {paperId}/>
       {questionPaperForm()}
-      <Error errorMessage={errors}/>
-      <Success successMessage= {success}/>
-      <p className="text-dark">{success}</p>
+      <Error errorMessage={errors} setErrorMessage={setErrors}/>
+      <Success successMessage= {success} setSuccessMessage={setSuccess}/>
     </Base>
   )
 }

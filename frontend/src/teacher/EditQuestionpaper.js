@@ -29,7 +29,6 @@ const EditQuestionpaper= ({match}) => {
 
   const preload = (paperId) => {
     getQuestionPaperById(paperId).then(data => {
-      console.log(data)
       if(data.error){
         setQuestionpaper({...questionpaper});
         setErrors("Unable to fetch the Paper")
@@ -70,7 +69,6 @@ const EditQuestionpaper= ({match}) => {
         }else{
           setErrors("")
           setSuccess("Update Successful!")
-          console.log(success)
         }
     })
   }
@@ -120,7 +118,8 @@ const EditQuestionpaper= ({match}) => {
       <QuestionMenu paperId = {paperId}/>
       {questionPaperForm()}
       <Error errorMessage={errors}/>
-      <Success successMessage={success}/>
+      <Success successMessage= {success}/>
+      <p className="text-dark">{success}</p>
     </Base>
   )
 }

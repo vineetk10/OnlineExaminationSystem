@@ -151,8 +151,7 @@ const Signup = () => {
     <Base title="" description="">
       {signUpForm()}
       {successMessage()}
-      {errorMessage()} 
-      <p className="text-dark">{JSON.stringify(values)}</p>     
+      {errorMessage()}    
     </Base>
   );
 };

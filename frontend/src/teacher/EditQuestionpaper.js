@@ -2,6 +2,8 @@ import React, { useState,useEffect } from 'react'
 import Base from '../core/Base';
 import QuestionMenu from './QuestionMenu';
 import { getQuestionPaperById, updateQuestionPaperById } from './helper/questionpaperapicalls';
+import Error from '../core/Error';
+import Success from '../core/Success';
 
 const EditQuestionpaper= ({match}) => {
 
@@ -17,12 +19,11 @@ const EditQuestionpaper= ({match}) => {
             duration: "Duration is compulsory",
             marks:"Marks is compulsory"
         },
-    update:false,
-    success: false
+    update:false
   })
 
-  const [errors,setErrors] = useState(false)
-  const [success,setSuccess] = useState(false)
+  const [errors,setErrors] = useState("")
+  const [success,setSuccess] = useState("")
 
   const {paperName,subjectName,duration,marks,error,update,paperId} = questionpaper
 
@@ -30,7 +31,8 @@ const EditQuestionpaper= ({match}) => {
     getQuestionPaperById(paperId).then(data => {
       console.log(data)
       if(data.error){
-        setQuestionpaper({...questionpaper,notfound:true});
+        setQuestionpaper({...questionpaper});
+        setErrors("Unable to fetch the Paper")
       }else{
         setQuestionpaper({
           ...questionpaper,
@@ -64,10 +66,11 @@ const EditQuestionpaper= ({match}) => {
     }
     updateQuestionPaperById(match.params.paperId, refactoredQp).then(data => {
         if(data.error){
-          setErrors(true)
+          setErrors("Update Failed!")
         }else{
           setErrors("")
-          setSuccess(true)
+          setSuccess("Update Successful!")
+          console.log(success)
         }
     })
   }
@@ -116,6 +119,8 @@ const EditQuestionpaper= ({match}) => {
     <Base title="" description="">
       <QuestionMenu paperId = {paperId}/>
       {questionPaperForm()}
+      <Error errorMessage={errors}/>
+      <Success successMessage={success}/>
     </Base>
   )
 }

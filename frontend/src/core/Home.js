@@ -35,7 +35,6 @@ const Home = ()=>{
            <div className="row text-center">
                <div className="header">
                    <div></div>
-                {/* <h5 className=" header__text text-secondary">All Question Papers</h5> */}
                 <span className="header__logo"><IoAddCircleSharp style={{color:"#FFCA2C"}} size={50} onClick={handleShow}/></span>
                </div>
                 <div className="row">

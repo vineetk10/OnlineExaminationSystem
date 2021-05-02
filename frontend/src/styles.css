@@ -19,9 +19,12 @@ body {
   order: 1;
 }
 
+.textbox{
+  order:2;
+}
 .header__logo{
   height: 200%;
-  order: 2;
+  order: 3;
 }
 
 .error {

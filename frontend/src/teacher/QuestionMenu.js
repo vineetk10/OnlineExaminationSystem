@@ -44,7 +44,7 @@ const QuestionMenu = ({ history,paperId }) => (
       </li>
       )}
       {isAutheticated() && isAutheticated().user.role === 1 &&(<li className="nav-item">
-        <Link style={currentTab(history, "/editquestions")} className="nav-link" to="/editquestions">
+        <Link style={currentTab(history, `/editquestions/${paperId}`)} className="nav-link" to={`/editquestions/${paperId}`}>
           Add/Edit Questions
         </Link>
       </li>)}      

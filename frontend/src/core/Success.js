@@ -1,18 +1,36 @@
 import React,{useEffect} from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Success = ({successMessage,setSuccessMessage}) => {
 
-  useEffect(() => {
-    setTimeout(() => {
-      setSuccessMessage("")
-    }, 5000);
-   }, [successMessage])
-
+  if(successMessage.length>0)
+  {
+    toast(successMessage, {
+      position: "bottom-center",
+      type: "success",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+      setSuccessMessage("");
+  }
+  
     return(
-      <div className="alert alert-success mt-3 col-md-4 offset-md-8 text-center"
-    style={{display: successMessage? "" : "none"}}>
-      <h5>{successMessage}</h5>
-    </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
     )     
 }
 

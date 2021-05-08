@@ -1,19 +1,38 @@
 import React,{useEffect} from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Error = ({errorMessage, setErrorMessage}) => {
 
-  useEffect(() => {
-    setTimeout(() => {
-      setErrorMessage("")
-    }, 5000);
-   }, [errorMessage])
+const Error = ({errorMessage, setErrorMessage,type}) => {
 
+  if(errorMessage.length>0)
+  {
+    toast(errorMessage, {
+      position: "top-right",
+      type: "error",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+      setErrorMessage("");
+  }
+  
     return(
-      <div className="alert alert-danger mt-3 col-md-4 offset-md-8 text-center"
-    style={{display: errorMessage? "" : "none"}}>
-      <h4>{errorMessage}</h4>
-    </div>
-    )    
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
+    )     
 }
 
 export default Error;

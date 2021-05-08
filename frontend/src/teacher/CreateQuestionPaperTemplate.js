@@ -1,13 +1,11 @@
 import React from 'react'
+import { SurveyBooleanPropertyEditor } from 'survey-creator';
 import "survey-react/survey.css";
+import SurveyCreatorView from "../core/SurveyCreatorView"
 const CreateTemplate = ()=>{
 
     return (
-        <div>
-            <div id="surveyContainer">
-                <div id="creatorElement"></div>
-            </div>
-        </div>
+        <SurveyCreatorView/>
     )   
 }
 

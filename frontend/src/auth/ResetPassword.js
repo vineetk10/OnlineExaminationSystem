@@ -3,38 +3,45 @@ import Base from "../core/Base";
 import { Link, Redirect } from "react-router-dom";
 import {signin, authenticate, isAutheticated, resetPassword, } from "../auth/helper/authapicalls"
 import onlineExam from "../core/onlineExam.png";
+import Error from "../core/Error"
+import Success from "../core/Success"
 
 export default function ForgotPassword({match}) {
 
   const [values, setValues] = useState({
     password: "",
     confirmPassword: "",
-    error: "",
+    didRedirect:false
   })
-
-  const {password,confirmPassword,error} = values;
+  const [errors,setErrors] = useState("")
+  const [success,setSuccess] = useState("")
+  const {password,confirmPassword,didRedirect} = values;
   const handleChange = name => event => {
-    setValues({...values,error:false,[name]:event.target.value});
+    setValues({...values,[name]:event.target.value});
+    setErrors(false);
   }
 
   const onSubmit = event => {
     event.preventDefault();
-    setValues({ ...values, error: false });
+    setErrors(false);
     if(password!==confirmPassword)
     {
-        setValues({...values,error: "Passwords do not match"})
+      setErrors("Passwords do not match");
         return;
     }
     resetPassword({password,userId:match.params.userId}).then(
       data => {
         if(data.error){
-          setValues({ ...values, error: data.error, success: false });
+          setValues({ ...values, success: false });
+          setErrors(data.error);
         } else {
           setValues({
             ...values,            
             password: "",
             confirmPassword: ""
           });
+          setSuccess("Password Changed Successfully!");
+          setTimeout(() => setValues({...values,didRedirect:true}), 5000);
         }
       }
     ).catch(console.log("Error in generating forgot password link"))
@@ -81,10 +88,18 @@ export default function ForgotPassword({match}) {
       </div>
     );
   };
-
+  const performRedirect = () =>{
+    if(didRedirect)
+    {
+      return <Redirect to="/signin"/>
+    }
+  }
   return (
     <Base title="" description="">
      {resetPasswordForm()}
+     <Error errorMessage={errors} setErrorMessage={setErrors}/>
+     <Success successMessage= {success} setSuccessMessage={setSuccess}/>
+     {performRedirect()}   
     </Base>
   )
 }

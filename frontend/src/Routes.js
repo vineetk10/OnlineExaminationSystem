@@ -1,7 +1,6 @@
 import React from 'react'
 import {BrowserRouter, Switch, Route} from "react-router-dom"
 import Home from "./core/Home"
-import CreateTemplate from "./teacher/CreateQuestionPaperTemplate.js"
 import Signup from "./auth/Signup";
 import Signin from "./auth/Signin";
 import ForgotPassword from "./auth/ForgotPassword";
@@ -15,7 +14,6 @@ const Routes = ()=>{
         <BrowserRouter>
             <Switch>
                 <TeacherRoute path="/" exact component={Home}/>
-                <Route path="/admin/createTemplate" exact component={CreateTemplate}/>
                 <Route path="/signup" exact component={Signup} />
                 <Route path="/signin" exact component={Signin} />
                 <Route path="/forgotpassword" exact component={ForgotPassword} />

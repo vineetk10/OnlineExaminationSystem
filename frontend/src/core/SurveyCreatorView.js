@@ -1,7 +1,5 @@
-import React, { Component, useEffect } from "react";
-import * as SurveyKo from "survey-knockout";
+import React, {useEffect } from "react";
 import * as SurveyCreator from "survey-creator";
-import jquery from 'jquery'
 import "survey-creator/survey-creator.css";
 
 const SurveyCreatorView = ()=>{

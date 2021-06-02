@@ -1,8 +1,8 @@
 import React, {useEffect } from "react";
 import * as SurveyCreator from "survey-creator";
 import "survey-creator/survey-creator.css";
-
-const SurveyCreatorView = ()=>{
+import {SavePaperJson} from "../core/helper/SurveyCreatorApiCalls"
+const SurveyCreatorView = ({paperId})=>{
   
     
     const preload = ()=>{
@@ -24,6 +24,7 @@ const SurveyCreatorView = ()=>{
             //save the survey JSON
             console.log(creator.text);
             //You can store in your database JSON as text: creator.text  or as JSON: creator.JSON
+            SavePaperJson(paperId,creator.text);
             window
                 .localStorage
                 .setItem(localStorageName, creator.text);

@@ -29,32 +29,10 @@ var questionPaperSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    questions: [{
-        _id: {
-            type: mongoose.Schema.Types.ObjectId,
-            index: true,
-            required: true,
-            auto: true,
-        },
-        questionType: {
-            type: String
-        },
-        question: {
-            type: String
-        },
-        marks: {
-            type: Number
-        },
-        questionImage: {
-            type: Buffer
-        },
-        options: {
-            type: Array
-        },
-        answer: {
-            type: String
-        }
-    }],
+    questionPaperJson:{
+        type: String,
+        default: ""
+    },
     responses: [{
         responseId: {
             type: mongoose.Schema.Types.ObjectId,

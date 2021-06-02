@@ -13,7 +13,7 @@ const EditQuestion= () => {
   return (
     <Base title="" description="">
       <QuestionMenu paperId = {params.paperId}/>
-      <SurveyCreatorView/>
+      <SurveyCreatorView paperId = {params.paperId}/>
     </Base>    
 )
 }

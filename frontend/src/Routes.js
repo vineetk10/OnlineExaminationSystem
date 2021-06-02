@@ -8,7 +8,7 @@ import ResetPassword from "./auth/ResetPassword";
 import EditQuestionpaper from './teacher/EditQuestionpaper';
 import EditQuestion from './teacher/EditQuestions';
 import TeacherRoute from './auth/helper/TeacherRoutes';
-
+import ViewQuestionPaper from "./core/ViewQuestionPaper"
 const Routes = ()=>{
     return (
         <BrowserRouter>
@@ -20,6 +20,7 @@ const Routes = ()=>{
                 <Route path="/resetpassword/:userId" exact component={ResetPassword}/>
                 <Route path="/editquestionpaper/:paperId" exact component={EditQuestionpaper} />
                 <Route path="/editquestions/:paperId" exact component={EditQuestion} />
+                <Route path="/viewquestionpaper/:paperId" exact component={ViewQuestionPaper} />
             </Switch>
         </BrowserRouter>
     )

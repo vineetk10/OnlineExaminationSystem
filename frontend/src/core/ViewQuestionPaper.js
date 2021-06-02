@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useParams } from 'react-router';
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
@@ -14,14 +14,43 @@ const ViewQuestionPaper = () =>  {
   const getQuestionPaper = () => {
     // get the json data 
     setQuestionPaper({
-      elements: [
-       { type: "text", name: "customerName", title: "What is your name?", isRequired: true}
+      "pages": [
+       {
+        "name": "page1",
+        "elements": [
+         {
+          "type": "imagepicker",
+          "name": "question1",
+          "choices": [
+           {
+            "value": "lion",
+            "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/lion.jpg"
+           },
+           {
+            "value": "giraffe",
+            "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/giraffe.jpg"
+           },
+           {
+            "value": "panda",
+            "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/panda.jpg"
+           },
+           {
+            "value": "camel",
+            "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/camel.jpg"
+           }
+          ]
+         }
+        ]
+       }
       ]
      })
   }
   
-  
-   var model = new Survey.Model(questionPaper);
+  const preload = ()=>{
+    getQuestionPaper();
+  }
+  useEffect(preload,[]);
+  var model = new Survey.Model(questionPaper);
    //Define a callback methods on survey complete
    const onComplete=(survey, options) =>{
     //Write survey results into database

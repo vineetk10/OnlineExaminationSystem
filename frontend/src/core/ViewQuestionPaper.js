@@ -4,6 +4,7 @@ import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import QuestionMenu from '../teacher/QuestionMenu';
 import Base from './Base';
+import {GetPaperJson} from "../core/helper/SurveyCreatorApiCalls"
 
 const ViewQuestionPaper = () =>  {
 
@@ -13,37 +14,12 @@ const ViewQuestionPaper = () =>  {
 
   const getQuestionPaper = () => {
     // get the json data 
-    setQuestionPaper({
-      "pages": [
-       {
-        "name": "page1",
-        "elements": [
-         {
-          "type": "imagepicker",
-          "name": "question1",
-          "choices": [
-           {
-            "value": "lion",
-            "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/lion.jpg"
-           },
-           {
-            "value": "giraffe",
-            "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/giraffe.jpg"
-           },
-           {
-            "value": "panda",
-            "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/panda.jpg"
-           },
-           {
-            "value": "camel",
-            "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/camel.jpg"
-           }
-          ]
-         }
-        ]
-       }
-      ]
-     })
+    GetPaperJson(params.paperId)
+    .then((paperJson)=>{
+      console.log(paperJson);
+      setQuestionPaper(JSON.parse(paperJson[0].questionPaperJson))
+    })
+    .catch((error)=>console.log(error));
   }
   
   const preload = ()=>{

@@ -14,3 +14,17 @@ exports.SavePaperJson = (req,res)=>{
         }
     )
 }
+
+exports.GetPaperJson = (req,res)=>{
+    QuestionPaper.find({_id:req.questionPaper._id})
+    .select("questionPaperJson")
+    .exec((error,paperJson)=>{
+        if(error)
+        {
+        return res.status(400).json({
+            error: "No Question Paper Json Found"
+        })
+    }
+    return res.json(paperJson);
+    })
+}

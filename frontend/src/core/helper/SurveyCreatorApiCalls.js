@@ -14,3 +14,16 @@ export const SavePaperJson = (questionPaperId,questionPaperJson)=>{
     })
     .catch(err=>console.log(err))
 }
+
+export const GetPaperJson = (questionPaperId)=>{
+    return fetch(`${API}/questionPaper/GetPaperJson/${questionPaperId}`,{
+        method: "GET",
+        headers: {
+            Accept: "application/json"
+        }
+    })
+    .then(response=>{
+        return response.json();
+    })
+    .catch(err=>console.log(err))
+}

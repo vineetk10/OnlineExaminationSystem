@@ -18,7 +18,8 @@ const SurveyCreatorView = ({paperId})=>{
         //Make toolbox active by default
         creator.rightContainerActiveItem("toolbox");
         
-        var localStorageName = "SaveLoadSurveyCreatorExample";
+        var localStorageName = `SaveLoadSurveyCreator\${paperId}`;
+        creator.text = window.localStorage.getItem(`SaveLoadSurveyCreator\${paperId}`) || "";
         //Setting this callback will make visible the "Save" button
         creator.saveSurveyFunc = function (saveNo, callback) {
             //save the survey JSON

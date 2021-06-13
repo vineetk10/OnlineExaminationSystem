@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var userResponseSchema = new mongoose.Schema({
     createdBy: {
-        type: ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
     createdOn: {
@@ -10,26 +10,13 @@ var userResponseSchema = new mongoose.Schema({
         default: Date.now
     },
     questionPaperId: {
-        type: ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "QuestionPaper"
     },
     responses: [{
-        questionId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "QuestionPaper" // not sure about this
-        },
-        answer: {
+        questionPaperJsonResponse:{
             type: String,
-            required: true,
             default: ""
-        },
-        evaluated: {
-            type: Boolean,
-            default: false
-        },
-        marksObtained: {
-            type: Number,
-            default: 0
         }
     }]
 })

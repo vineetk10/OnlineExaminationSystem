@@ -20,7 +20,7 @@ const Routes = ()=>{
                 <Route path="/resetpassword/:userId" exact component={ResetPassword}/>
                 <Route path="/editquestionpaper/:paperId" exact component={EditQuestionpaper} />
                 <Route path="/editquestions/:paperId" exact component={EditQuestion} />
-                <Route path="/viewquestionpaper/:paperId" exact component={ViewQuestionPaper} />
+                <Route path="/viewquestionpaper/:paperId/:userId" exact component={ViewQuestionPaper} />
             </Switch>
         </BrowserRouter>
     )

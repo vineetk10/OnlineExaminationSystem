@@ -5,7 +5,7 @@ import "survey-react/survey.css";
 import QuestionMenu from '../teacher/QuestionMenu';
 import Base from './Base';
 import {GetPaperJson} from "../core/helper/SurveyCreatorApiCalls"
-
+import { SavePaperResponseJson } from '../user/helper/userapicalls';
 const ViewQuestionPaper = () =>  {
 
   const params = useParams();
@@ -30,6 +30,8 @@ const ViewQuestionPaper = () =>  {
    //Define a callback methods on survey complete
    const onComplete=(survey, options) =>{
     //Write survey results into database
+  
+    SavePaperResponseJson(params.userId,params.paperId,JSON.stringify(survey.data))
     console.log("Survey results: " + JSON.stringify(survey.data));
    }
    

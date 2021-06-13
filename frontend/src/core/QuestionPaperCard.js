@@ -3,8 +3,9 @@ import { MdDelete } from "react-icons/md";
 import { IoTime,IoBook } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { deleteQuestionPaper } from '../teacher/helper/questionpaperapicalls';
+import { isAutheticated, } from "../auth/helper/authapicalls"
 const QuestionPaperCard = ({paper})=>{
-
+    const {user}= isAutheticated();
     const paperTitle = paper ? paper.paperTitle : "";
     const subject = paper ? paper.subject : ""; 
     const duration = paper ? paper.duration: "";
@@ -49,7 +50,7 @@ const QuestionPaperCard = ({paper})=>{
                 </Link>
             </div>
             <div className="col-md-6">
-            <Link to={`/viewquestionpaper/${paper._id}`} className="btn w-100 btn-outline-warning rounded">
+            <Link to={`/viewquestionpaper/${paper._id}/${user._id}`} className="btn w-100 btn-outline-warning rounded">
                     View
                 </Link>
             </div>

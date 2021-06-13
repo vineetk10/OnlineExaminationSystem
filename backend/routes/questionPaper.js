@@ -5,6 +5,8 @@ const{getUserById}= require("../controllers/user");
 const {isSignedIn,isAuthenticated,isAdmin} = require("../controllers/auth");
 const {getQuestionPaperById, getAllQuestionPapers, createQuestionPaper, getQuestionPaper, deleteQuestionPaper,updateQuestionPaper} = require("../controllers/questionPaper");
 const {SavePaperJson,GetPaperJson} = require("../controllers/SurveyCreator")
+const {SavePaperResponse} = require("../controllers/userResponse")
+
 router.param("questionPaperId", getQuestionPaperById);
 router.param("userId",getUserById);
 
@@ -18,4 +20,6 @@ router.delete("/questionPaper/deleteQuestionPaper", deleteQuestionPaper)
 
 router.post("/questionPaper/SavePaperJson/:questionPaperId",SavePaperJson);
 router.get("/questionPaper/GetPaperJson/:questionPaperId",GetPaperJson);
+
+router.post("/questionPaper/SavePaperResponseJson",SavePaperResponse);
 module.exports = router;

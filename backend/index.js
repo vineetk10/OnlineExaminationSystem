@@ -11,6 +11,16 @@ const authRoutes = require("./routes/auth");
 const questionPaperRoutes = require("./routes/questionPaper");
 
 //DB Connection
+const env = process.env.NODE_ENV || 'development';
+
+if(env === 'test')
+{
+    mongoose.connect(process.env.TESTDATABASE, {
+        useNewUrlParser: true
+    }).then(() => {
+        console.log("DB CONNECTED");
+    }).catch(console.log("DB CONNECTED FAILED"))
+}
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true
 }).then(() => {
@@ -18,7 +28,7 @@ mongoose.connect(process.env.DATABASE, {
 }).catch(console.log("DB CONNECTED FAILED"))
 
 //PORT
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8001;
 
 app.listen(port, () => {
     console.log(`app is running at ${port}`);
@@ -36,3 +46,5 @@ app.use(cors());
 //My Routes
 app.use("/api", authRoutes);
 app.use("/api", questionPaperRoutes);
+
+module.exports = app;

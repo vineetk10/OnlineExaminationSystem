@@ -18,23 +18,33 @@ exports.getQuestionPaper = (req,res) => {
         return res.json(req.questionPaper);
 }
 
-exports.getAllQuestionPapers = (req,res)=>{
+exports.getAllQuestionPapers = async (req,res)=>{
+    
+    let papers = await GetAllQuestionPapersOfUser(req);
+    if(papers==undefined || papers.hasOwnProperty('error'))
+        return res.status(400).json(papers.error);
+    return res.json(papers);
+}
+
+
+function GetAllQuestionPapersOfUser(req) {
     let limit = req.query.limit ? parseInt(req.query.limit) : 8;
     let sortBy = req.query.sortBy ? parseInt(req.query.sortBy) : "_id";
+    let userId = req.body.userId;
 
-    QuestionPaper.find({createdBy:req.body.userId})
-    .select("-questions")
-    .sort([[sortBy, "asc"]])
-    .limit(limit)
-    .exec((error,papers)=>{
-        if(error)
-        {
-            return res.status(400).json({
+     return QuestionPaper.find({ createdBy: userId })
+        .select("-questions")
+        .sort([[sortBy, "asc"]])
+        .limit(limit)
+        .exec()
+        .then((papers) => {
+            return papers;
+        })
+        .catch(error=>{
+            return {
                 error: "No Question Paper Found"
-            })
-        }
-        return res.json(papers);
-    })
+            };
+        })
 }
 
 exports.createQuestionPaper = (req, res)=>{

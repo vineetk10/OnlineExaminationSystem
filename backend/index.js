@@ -11,22 +11,22 @@ const authRoutes = require("./routes/auth");
 const questionPaperRoutes = require("./routes/questionPaper");
 
 //DB Connection
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV.toString() || 'development';
 
-if(env === 'test')
+if(env.trim() == "test")
 {
     mongoose.connect(process.env.TESTDATABASE, {
+        useNewUrlParser: true
+    }).then(() => {
+        console.log("TEST DB CONNECTED");
+    }).catch(console.log("TEST DB CONNECTED FAILED"))
+}else{
+    mongoose.connect(process.env.DATABASE, {
         useNewUrlParser: true
     }).then(() => {
         console.log("DB CONNECTED");
     }).catch(console.log("DB CONNECTED FAILED"))
 }
-mongoose.connect(process.env.DATABASE, {
-    useNewUrlParser: true
-}).then(() => {
-    console.log("DB CONNECTED");
-}).catch(console.log("DB CONNECTED FAILED"))
-
 //PORT
 const port = process.env.PORT || 8001;
 

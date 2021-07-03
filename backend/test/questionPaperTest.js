@@ -2,10 +2,10 @@ process.env.NODE_ENV = 'test';
 var rewire = require('rewire');
 const QuestionPaper = require("../models/questionPaper");
 var questionPapers = rewire('../controllers/questionPaper');
-var GetAllQuestionPapersOfUser = questionPapers.__get__('GetAllQuestionPapersOfUser');
-
+// var GetAllQuestionPapersOfUser = questionPapers.__get__('GetAllQuestionPapersOfUser');
+var QuestionPaperManager = require("../manager/questionPaper")
 describe('Task API Routes', function() {
-    
+
     describe('GET ALL QUESTION PAPERS', function() {
 
         before(function() { 
@@ -29,7 +29,7 @@ describe('Task API Routes', function() {
         });
 
         it('returns number of papers when userId correct', async function() {
-            var papers = await GetAllQuestionPapersOfUser({
+            var papers = await QuestionPaperManager.GetAllQuestionPapersOfUser({
                 "query": {},
                 "body" : {"userId":"604e0f96a224d944b89ef730"}
             })
@@ -38,7 +38,7 @@ describe('Task API Routes', function() {
         });
 
         it('returns 0 number of papers when userId incorrect', async function() {
-            var papers = await GetAllQuestionPapersOfUser({
+            var papers = await QuestionPaperManager.GetAllQuestionPapersOfUser({
                 "query": {},
                 "body" : {"userId":"604e0f96a224d944b89ef731"}
             })

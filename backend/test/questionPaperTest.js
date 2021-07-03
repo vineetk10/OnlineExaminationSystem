@@ -1,17 +1,10 @@
-const supertest = require("supertest");
-process.env.NODE_ENV = 'test'
-var app = require('../index');
-
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-chai.use(chaiHttp);
+process.env.NODE_ENV = 'test';
 var rewire = require('rewire');
-// var should = chai.should();
 const QuestionPaper = require("../models/questionPaper");
 var questionPapers = rewire('../controllers/questionPaper');
 var GetAllQuestionPapersOfUser = questionPapers.__get__('GetAllQuestionPapersOfUser');
+
 describe('Task API Routes', function() {
-    // This function will run before every test to clear database
     
     describe('GET ALL QUESTION PAPERS', function() {
 

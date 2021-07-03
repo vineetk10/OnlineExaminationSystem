@@ -43,6 +43,33 @@ describe('Task API Routes', function() {
 
             expect(papers.length).to.equal(0);
         });
+
+        it('returns undefined number of papers when userId blank', async function() {
+            var papers = await QuestionPaperManager.GetAllQuestionPapersOfUser({
+                "query": {},
+                "body" : {"userId":""}
+            })
+
+            expect(papers.length).to.equal(undefined);
+        });
+
+        it('returns undefined number of papers when userId empty space', async function() {
+            var papers = await QuestionPaperManager.GetAllQuestionPapersOfUser({
+                "query": {},
+                "body" : {"userId":" "}
+            })
+
+            expect(papers.length).to.equal(undefined);
+        });
+
+        it('returns undefined number of papers when userId null', async function() {
+            var papers = await QuestionPaperManager.GetAllQuestionPapersOfUser({
+                "query": {},
+                "body" : {"userId":null}
+            })
+
+            expect(papers.length).to.equal(0);
+        });
     });
 
 })

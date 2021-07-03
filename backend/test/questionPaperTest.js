@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test';
 const QuestionPaper = require("../models/questionPaper");
 var QuestionPaperManager = require("../manager/questionPaper")
 
-describe('Task API Routes', function() {
+describe('Question Paper Test', function() {
 
     describe('GET ALL QUESTION PAPERS', function() {
 
@@ -72,4 +72,38 @@ describe('Task API Routes', function() {
         });
     });
 
+    describe('Create Question Paper', function(){
+        after(()=>{
+            QuestionPaper.deleteOne({paperTitle:"Marathi",subject: "Marathi"})
+            .then(() => console.log("Delete Successful"))
+            .catch((err)=>console.log(err))
+        });
+
+        it('returns correct paper when paper saved', async function() {
+            var paper = await QuestionPaperManager.CreateQuestionPaperOfUser({
+                "query": {},
+                "body" : {
+                    paperTitle:"Marathi",
+                    subject: "Marathi",
+                    duration:"120",
+                    maxMarks:"100",
+                    createdBy: "604e0f96a224d944b89ef730", 
+                    questions: "t@t.com",  
+                    password: "test"
+                }
+            })
+
+            expect(paper.paperTitle).to.equal("Marathi");
+        });
+
+        it('returns undefined when paper blank', async function() {
+            var paper = await QuestionPaperManager.CreateQuestionPaperOfUser({
+                "query": {},
+                "body" : {
+                }
+            })
+
+            expect(paper.paperTitle).to.equal(undefined);
+        });
+    });
 })

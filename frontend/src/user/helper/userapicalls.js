@@ -18,3 +18,13 @@ export const SavePaperResponseJson = (createdBy,paperId,response)=>{
         return response.json();
     }).catch(err=>console.log(err))
 }
+
+export const GetAllUsers = ()=>{
+    return fetch(`${API}GetAllUsers/`,{
+        method: "GET"
+    })
+    .then(response=>{
+        return response.json()
+    })
+    .catch(err=>console.log(err))
+}

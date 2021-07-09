@@ -7,7 +7,7 @@ const TeacherRoute =({ component: Component, ...rest })=> {
     <Route
       {...rest}
       render={props =>
-        isAutheticated() && isAutheticated().user.role<=2 ? (
+        isAutheticated() && isAutheticated().user.role==1 ? (
           <Component {...props}/>
         ) : (
           <Redirect

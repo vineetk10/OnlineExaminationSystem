@@ -9,6 +9,7 @@ import EditQuestionpaper from './teacher/EditQuestionpaper';
 import EditQuestion from './teacher/EditQuestions';
 import TeacherRoute from './auth/helper/TeacherRoutes';
 import ViewQuestionPaper from "./core/ViewQuestionPaper"
+import Invite from "./teacher/Invite"
 const Routes = ()=>{
     return (
         <BrowserRouter>
@@ -21,6 +22,7 @@ const Routes = ()=>{
                 <Route path="/editquestionpaper/:paperId" exact component={EditQuestionpaper} />
                 <Route path="/editquestions/:paperId" exact component={EditQuestion} />
                 <Route path="/viewquestionpaper/:paperId/:userId" exact component={ViewQuestionPaper} />
+                <TeacherRoute path="/invite" exact component={Invite}/>
             </Switch>
         </BrowserRouter>
     )

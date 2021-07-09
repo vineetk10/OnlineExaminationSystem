@@ -21,6 +21,9 @@ const Home = ()=>{
             }
             else
                 setPapers(data);
+                if (typeof window !== "undefined") {
+                    localStorage.setItem("papers", JSON.stringify(data));
+                }
         })
         .catch(err=>console.log(err))
     }

@@ -9,6 +9,7 @@ const cors = require("cors");
 //My routes
 const authRoutes = require("./routes/auth");
 const questionPaperRoutes = require("./routes/questionPaper");
+const userRoutes = require("./routes/user");
 
 //DB Connection
 const env = process.env.NODE_ENV.toString() || 'development';
@@ -46,5 +47,6 @@ app.use(cors());
 //My Routes
 app.use("/api", authRoutes);
 app.use("/api", questionPaperRoutes);
+app.use("/api", userRoutes);
 
 module.exports = app;

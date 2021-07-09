@@ -12,6 +12,24 @@ exports.getUserById = (req,res,next,id) => {
   })
 }
 
+exports.getAllUsers = (req,res) => {
+  let limit = req.query.limit ? parseInt(req.query.limit) : 8;
+        let sortBy = req.query.sortBy ? parseInt(req.query.sortBy) : "_id";
+
+        return User.find()
+            .sort([[sortBy, "asc"]])
+            .limit(limit)
+            .exec()
+            .then((users) => {
+                return res.json(users);
+            })
+            .catch(error=>{
+                return {
+                    error: "No User Found"
+                };
+            })
+}
+
 exports.getUser = (req,res) => {
   req.profile.salt = undefined;
   req.profile.encry_password = undefined;

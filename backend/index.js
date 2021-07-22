@@ -12,7 +12,7 @@ const questionPaperRoutes = require("./routes/questionPaper");
 const userRoutes = require("./routes/user");
 
 //DB Connection
-const env = process.env.NODE_ENV.toString() || 'development';
+const env = process.env.NODE_ENV || 'development';
 
 if(env.trim() == "test")
 {
@@ -29,7 +29,7 @@ if(env.trim() == "test")
     }).catch(console.log("DB CONNECTED FAILED"))
 }
 //PORT
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 8003;
 
 app.listen(port, () => {
     console.log(`app is running at ${port}`);

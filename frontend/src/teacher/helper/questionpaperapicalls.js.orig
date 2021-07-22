@@ -1,0 +1,58 @@
+import {API} from "../../backend"
+
+export const getQuestionPapers = (userId,token)=>{
+    return fetch(`${API}/questionPapers/${userId}`,{
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+        body:JSON.stringify({"userId":userId})
+    })
+    .then(response=>{
+        return response.json()
+    })
+    .catch(err=>console.log(err))
+}
+
+export const getQuestionPaperById = (paperId) => {
+    return fetch(`${API}/questionPaper/${paperId}`,{
+        method:"GET",
+    })
+    .then(response=>{
+        return response.json();
+    })
+    .catch(err=>console.log(err))
+}
+
+export const deleteQuestionPaper = (questionPaperId) =>{
+    return fetch(`${API}/questionPaper/deleteQuestionPaper`,{
+        method:"DELETE",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+        body:JSON.stringify({"questionPaperId":questionPaperId})
+    })
+<<<<<<< HEAD
+}
+
+export const updateQuestionPaperById = (paperId, questionPaper) => {
+    return fetch(`${API}/questionPaper/update/${paperId}`,{
+        method:"PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+        body:JSON.stringify(questionPaper)
+    }).then(response => {
+        return response.json()
+    }).catch(err => console.log(err))
+=======
+    .then(response=>{
+        return response.json();
+    })
+    .catch(err=>console.log(err))
+>>>>>>> 6ced981... Reloading the page after delete
+}

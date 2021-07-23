@@ -13,4 +13,5 @@ deploy:
   api_key: 
     secure: $HEROKU_API_KEY
   on:
+    repo: vineetk10/OnlineExaminationSystem
     branch: master

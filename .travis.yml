@@ -1,9 +1,9 @@
 service:
   - docker
 
-before_install:
-  - docker-compose build
-  - docker-compose up
+# before_install:
+#   - docker-compose build
+#   - docker-compose up
 
 # script:
 #     - docker run -e CI=true myapp-server npm run test

@@ -7,7 +7,7 @@ service:
 
 # script:
 #     - docker run -e CI=true myapp-server npm run test
-
+language: generic
 deploy:
   provider: heroku
   api_key: 

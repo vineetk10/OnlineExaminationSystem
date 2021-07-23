@@ -10,7 +10,6 @@ service:
 language: generic
 deploy:
   provider: heroku
-  api_key: 
-    secure: 7b4611db-81bc-42dd-b5b2-c04a10795b9a
+  api_key: 7b4611db-81bc-42dd-b5b2-c04a10795b9a
   on:
     branch: master

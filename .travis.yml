@@ -10,8 +10,7 @@ service:
 language: generic
 deploy:
   provider: heroku
-  api_key: 
-    secure: $HEROKU_API_KEY
+  api_key: $HEROKU_API_KEY
   on:
     repo: vineetk10/OnlineExaminationSystem
     branch: master
